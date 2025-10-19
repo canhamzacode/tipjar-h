@@ -1,12 +1,25 @@
 import dotenv from "dotenv";
-
-dotenv.config();
 import { TwitterApi } from "twitter-api-v2";
 
-const BOT_USERNAME = "canhamzacode";
-const STATE_FILE = "./bot_state.json";
-const POLL_INTERVAL = 2 * 60 * 1000;
-const DRY_RUN = true;
+dotenv.config();
+
+// Environment validation
+const requiredEnvVars = [
+  'X_API_KEY',
+  'X_API_SECRET', 
+  'X_ACCESS_TOKEN',
+  'X_ACCESS_SECRET',
+  'BOT_USERNAME'
+];
+
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    throw new Error(`Missing required environment variable: ${envVar}`);
+  }
+}
+
+export const BOT_USERNAME = process.env.BOT_USERNAME!;
+export const DRY_RUN = process.env.NODE_ENV !== 'production';
 
 const client = new TwitterApi({
   appKey: process.env.X_API_KEY!,

@@ -2,52 +2,115 @@ import { db } from "../db";
 import { bot_state } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { handleMentions } from "./handleMentions";
-import { rwClient } from "./twitter";
+import { rwClient, BOT_USERNAME } from "./twitter";
+import { twitterRateLimiter } from "./rateLimiter";
+import { logger } from "./logger";
 
-export const BOT_USERNAME = process.env.BOT_USERNAME!;
+export { BOT_USERNAME };
 
-export const pollMentions = async () => {
-  const me = await rwClient.v2.me();
-  console.log("🤖 Logged in as:", me.data);
+export const pollMentions = async (): Promise<void> => {
+  try {
+    // Check rate limit before making API calls
+    if (!(await twitterRateLimiter.checkLimit())) {
+      logger.warn('Skipping poll due to rate limit');
+      return;
+    }
 
-  const state = await db.query.bot_state.findFirst({
-    where: eq(bot_state.id, "tipjarbot"),
-  });
+    logger.info('Starting mention polling');
 
-  const sinceId = state?.last_mention_id ?? undefined;
+    // Get bot user info
+    const me = await rwClient.v2.me();
+    if (!me.data?.id) {
+      throw new Error('Failed to get bot user information');
+    }
 
-  const mentions = await rwClient.v2.userMentionTimeline(me.data.id, {
-    since_id: sinceId,
-    max_results: 10,
-  });
-
-  console.log("Fetched mentions raw:", mentions.data);
-
-  if (!mentions.data.data?.length) {
-    console.log("🕸️ No new mentions found");
-    return;
-  }
-
-  for (const tweet of mentions.data.data.reverse()) {
-    console.log("🔔 Processing mention:", tweet.id, tweet.text);
-    await handleMentions(tweet);
-  }
-
-  const latestId = mentions.data.data[0].id;
-  await db
-    .insert(bot_state)
-    .values({
-      id: "tipjarbot",
-      last_mention_id: latestId,
-      updated_at: new Date(),
-    })
-    .onConflictDoUpdate({
-      target: bot_state.id,
-      set: {
-        last_mention_id: latestId,
-        updated_at: new Date(),
-      },
+    logger.info('Bot authenticated', { 
+      username: me.data.username, 
+      id: me.data.id 
     });
 
-  console.log(`✅ Processed up to mention ID ${latestId}`);
+    // Get last processed mention ID
+    const state = await db.query.bot_state.findFirst({
+      where: eq(bot_state.id, "tipjarbot"),
+    });
+
+    const sinceId = state?.last_mention_id ?? undefined;
+    logger.debug('Fetching mentions', { sinceId });
+
+    // Fetch mentions with error handling
+    const mentions = await rwClient.v2.userMentionTimeline(me.data.id, {
+      since_id: sinceId,
+      max_results: 10,
+      'tweet.fields': ['author_id', 'created_at', 'public_metrics'],
+    });
+
+    if (!mentions.data.data?.length) {
+      logger.info('No new mentions found');
+      return;
+    }
+
+    logger.info('Found new mentions', { 
+      count: mentions.data.data.length,
+      sinceId 
+    });
+
+    // Process mentions in parallel with concurrency limit
+    const processingPromises = mentions.data.data
+      .reverse() // Process oldest first
+      .map(async (tweet, index) => {
+        // Add small delay between processing to avoid overwhelming the system
+        await new Promise(resolve => setTimeout(resolve, index * 100));
+        
+        logger.debug('Processing mention', { 
+          tweetId: tweet.id, 
+          author: tweet.author_id,
+          text: tweet.text?.substring(0, 100) + '...' // Log truncated text for privacy
+        });
+        
+        await handleMentions(tweet);
+      });
+
+    // Wait for all mentions to be processed
+    await Promise.allSettled(processingPromises);
+
+    // Update state with latest processed mention ID
+    const latestId = mentions.data.data[0].id;
+    await updateBotState(latestId);
+
+    logger.info('Mention polling completed successfully', { 
+      processed: mentions.data.data.length,
+      latestId 
+    });
+
+  } catch (error) {
+    logger.error('Failed to poll mentions', error as Error, {
+      rateLimiterStatus: twitterRateLimiter.getStatus()
+    });
+    
+    // Don't throw - we want the polling to continue on the next interval
+  }
+};
+
+const updateBotState = async (latestId: string): Promise<void> => {
+  try {
+    await db
+      .insert(bot_state)
+      .values({
+        id: "tipjarbot",
+        last_mention_id: latestId,
+        updated_at: new Date(),
+      })
+      .onConflictDoUpdate({
+        target: bot_state.id,
+        set: {
+          last_mention_id: latestId,
+          updated_at: new Date(),
+        },
+      });
+
+    logger.debug('Bot state updated', { latestId });
+  } catch (error) {
+    logger.error('Failed to update bot state', error as Error, { latestId });
+    throw error; // Re-throw as this is critical for preventing duplicate processing
+  }
 };
