@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import logger from "./logger.service";
 
 interface CacheItem<T> {
   data: T;
@@ -10,24 +10,26 @@ class MemoryCache {
   private cache = new Map<string, CacheItem<any>>();
   private cleanupInterval: NodeJS.Timeout;
 
-  constructor(cleanupIntervalMs = 5 * 60 * 1000) { // 5 minutes
+  constructor(cleanupIntervalMs = 5 * 60 * 1000) {
+    // 5 minutes
     // Periodic cleanup of expired items
     this.cleanupInterval = setInterval(() => {
       this.cleanup();
     }, cleanupIntervalMs);
   }
 
-  set<T>(key: string, data: T, ttlMs = 10 * 60 * 1000): void { // 10 minutes default
+  set<T>(key: string, data: T, ttlMs = 10 * 60 * 1000): void {
+    // 10 minutes default
     this.cache.set(key, {
       data,
       timestamp: Date.now(),
-      ttl: ttlMs
+      ttl: ttlMs,
     });
   }
 
   get<T>(key: string): T | null {
     const item = this.cache.get(key);
-    
+
     if (!item) {
       return null;
     }
@@ -61,9 +63,9 @@ class MemoryCache {
     }
 
     if (expiredCount > 0) {
-      logger.debug('Cache cleanup completed', { 
+      logger.debug("Cache cleanup completed", {
         expiredItems: expiredCount,
-        remainingItems: this.cache.size 
+        remainingItems: this.cache.size,
       });
     }
   }
@@ -71,7 +73,7 @@ class MemoryCache {
   getStats() {
     return {
       size: this.cache.size,
-      keys: Array.from(this.cache.keys())
+      keys: Array.from(this.cache.keys()),
     };
   }
 
@@ -94,9 +96,9 @@ export const getCachedUser = (twitterHandle: string): any | null => {
 };
 
 export const cacheBotState = (state: any): void => {
-  cache.set('bot:state', state, 5 * 60 * 1000); // 5 minutes
+  cache.set("bot:state", state, 5 * 60 * 1000); // 5 minutes
 };
 
 export const getCachedBotState = (): any | null => {
-  return cache.get('bot:state');
+  return cache.get("bot:state");
 };

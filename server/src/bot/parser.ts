@@ -1,4 +1,4 @@
-import { validateCommand, sanitizeUsername, sanitizeAmount } from './validation';
+import { validateCommand, sanitizeUsername, sanitizeAmount } from "../services";
 
 interface Command {
   type: "send" | "unknown";
@@ -12,7 +12,7 @@ export const parseCommand = (text: string): Command => {
   try {
     // Enhanced regex to handle various formats
     const match = text.match(/send\s+(\d+(?:\.\d{1,2})?)\s*(\w+)?\s*@(\w+)/i);
-    
+
     if (!match) {
       return { type: "unknown", error: "Invalid command format" };
     }
@@ -31,9 +31,9 @@ export const parseCommand = (text: string): Command => {
 
     const validation = validateCommand(command);
     if (!validation.success) {
-      return { 
-        type: "unknown", 
-        error: `Invalid command: ${validation.error.issues.map(i => i.message).join(', ')}` 
+      return {
+        type: "unknown",
+        error: `Invalid command: ${validation.error.issues.map((i) => i.message).join(", ")}`,
       };
     }
 

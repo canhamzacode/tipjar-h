@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express";
-import { rwClient } from "../utils";
 
 const router = Router();
 
