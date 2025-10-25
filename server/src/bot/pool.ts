@@ -2,7 +2,7 @@ import { db } from "../db";
 import { bot_state } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { handleMentions } from "./handleMentions";
-import { rwClient, BOT_USERNAME } from "./twitter";
+import { rwClient, BOT_USERNAME } from "../utils/twitter";
 import { twitterRateLimiter } from "./rateLimiter";
 import { logger } from "../services";
 

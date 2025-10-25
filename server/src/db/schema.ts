@@ -21,6 +21,12 @@ export const users = pgTable("users", {
   twitter_id: varchar("twitter_id", { length: 50 }),
   wallet_address: varchar("wallet_address", { length: 66 }),
   wallet_type: walletType("wallet_type").default("non-custodial"),
+  name: varchar("name", { length: 100 }),
+  profile_image_url: text("profile_image_url"),
+  description: text("description"),
+  access_token: text("access_token"),
+  refresh_token: text("refresh_token"),
+  token_expires_at: timestamp("token_expires_at"),
   created_at: timestamp("created_at").defaultNow(),
 });
 

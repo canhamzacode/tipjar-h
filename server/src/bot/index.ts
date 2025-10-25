@@ -1,9 +1,9 @@
 import cron from "node-cron";
 import { logger } from "../services";
-import { BOT_USERNAME } from "./twitter";
+import { BOT_USERNAME } from "../utils/twitter";
 import { pollMentions } from "./pool";
 
-const CRON_SCHEDULE = process.env.CRON_SCHEDULE || "*/5 * * * *"; // every 5 min
+const CRON_SCHEDULE = process.env.CRON_SCHEDULE || "*/15 * * * *"; // every 15 min
 
 logger.info(
   `Starting Twitter bot for @${BOT_USERNAME} with schedule: ${CRON_SCHEDULE}`,

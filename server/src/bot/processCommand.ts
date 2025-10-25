@@ -1,5 +1,5 @@
 import { parseCommand } from "./parser";
-import { rwClient, DRY_RUN } from "./twitter";
+import { rwClient, DRY_RUN } from "../utils";
 import { logger } from "../services";
 import { handleTransactionCommand } from "./handleTransactionCommand";
 

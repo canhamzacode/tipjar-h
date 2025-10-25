@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { logger } from "../services";
 
 interface RateLimitConfig {
   maxRequests: number;
@@ -17,23 +17,23 @@ class RateLimiter {
 
   async checkLimit(): Promise<boolean> {
     if (this.isBackingOff) {
-      logger.warn('Rate limiter in backoff mode');
+      logger.warn("Rate limiter in backoff mode");
       return false;
     }
 
     const now = Date.now();
-    
+
     // Remove old requests outside the window
     this.requests = this.requests.filter(
-      timestamp => now - timestamp < this.config.windowMs
+      (timestamp) => now - timestamp < this.config.windowMs,
     );
 
     if (this.requests.length >= this.config.maxRequests) {
-      logger.warn('Rate limit exceeded, entering backoff', {
+      logger.warn("Rate limit exceeded, entering backoff", {
         requests: this.requests.length,
-        maxRequests: this.config.maxRequests
+        maxRequests: this.config.maxRequests,
       });
-      
+
       this.startBackoff();
       return false;
     }
@@ -47,7 +47,7 @@ class RateLimiter {
     setTimeout(() => {
       this.isBackingOff = false;
       this.requests = []; // Clear requests after backoff
-      logger.info('Rate limiter backoff ended');
+      logger.info("Rate limiter backoff ended");
     }, this.config.backoffMs);
   }
 
@@ -55,7 +55,7 @@ class RateLimiter {
     return {
       requestCount: this.requests.length,
       maxRequests: this.config.maxRequests,
-      isBackingOff: this.isBackingOff
+      isBackingOff: this.isBackingOff,
     };
   }
 }

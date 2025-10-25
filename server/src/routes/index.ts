@@ -1,14 +1,8 @@
 import { Request, Response, Router } from "express";
+import authRoute from "./auth.route";
 
 const router = Router();
 
-router.get("/get-tweet", async (req: Request, res: Response) => {
-  const lookupTweetById = "";
+router.use("/auth", authRoute);
 
-  console.log(lookupTweetById);
-  return {
-    data: lookupTweetById,
-  };
-});
-
-export default router;
+export default router as Router;

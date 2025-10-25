@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { transactions, users } from "../db/schema";
 import { getCachedUser, cacheUser, logger } from "../services";
-import { rwClient, DRY_RUN } from "./twitter";
+import { rwClient, DRY_RUN } from "../utils/twitter";
 
 async function getOrCreateUserSimple(twitterHandle: string) {
   let user = getCachedUser(twitterHandle);

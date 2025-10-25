@@ -1,0 +1,79 @@
+2025-10-25 00:58:42 error: Error initiating Twitter OAuth
+2025-10-25 00:58:58 info: Received SIGTERM, shutting down gracefully
+2025-10-25 00:58:59 info: Server started {"port":3000}
+2025-10-25 00:59:01 error: Error initiating Twitter OAuth {"error":"Cannot set properties of undefined (setting 'oauth')","stack":"TypeError: Cannot set properties of undefined (setting 'oauth')\n    at initiateTwitterOath (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:18:17)\n    at Layer.handleRequest (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/lib/layer.js:152:17)\n    at next (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/lib/route.js:117:3)\n    at handle (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/lib/layer.js:152:17)\n    at /home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/index.js:295:15\n    at processParams (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/index.js:582:12)\n    at next (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/index.js:291:5)\n    at Function.handle (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/router/index.js:186:3)"}
+2025-10-25 01:05:08 info: Received SIGINT, shutting down gracefully
+2025-10-25 10:09:03 info: Server started {"port":3000}
+2025-10-25 10:09:36 info: Twitter OAuth initiated {"state":"n~J8peSVoQE3mOyKVTE6l9.W90vFj-N-"}
+2025-10-25 10:10:50 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:10:51 info: Server started {"port":3000}
+2025-10-25 10:12:30 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:12:30 info: Server started {"port":3000}
+2025-10-25 10:12:35 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:12:36 info: Server started {"port":3000}
+2025-10-25 10:12:40 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:12:40 info: Server started {"port":3000}
+2025-10-25 10:17:27 info: Twitter OAuth initiated {"state":"D9FN0.-~Xd8Jq5_CctqvVU2jez-kZOKA"}
+2025-10-25 10:23:12 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:23:13 info: Server started {"port":3000}
+2025-10-25 10:24:02 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:24:03 info: Server started {"port":3000}
+2025-10-25 10:27:15 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:27:16 info: Server started {"port":3000}
+2025-10-25 10:28:05 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:28:07 info: Server started {"port":3000}
+2025-10-25 10:28:27 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:28:27 info: Server started {"port":3000}
+2025-10-25 10:28:46 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:28:47 info: Server started {"port":3000}
+2025-10-25 10:29:51 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:29:52 info: Server started {"port":3000}
+2025-10-25 10:30:51 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:30:52 info: Server started {"port":3000}
+2025-10-25 10:31:19 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:31:20 info: Server started {"port":3000}
+2025-10-25 10:31:41 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:31:42 info: Server started {"port":3000}
+2025-10-25 10:32:23 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:32:24 info: Server started {"port":3000}
+2025-10-25 10:32:56 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:32:58 info: Server started {"port":3000}
+2025-10-25 10:33:58 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:33:58 info: Server started {"port":3000}
+2025-10-25 10:39:11 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:39:13 info: Server started {"port":3000}
+2025-10-25 10:43:45 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:43:46 info: Server started {"port":3000}
+2025-10-25 10:44:52 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:44:53 info: Server started {"port":3000}
+2025-10-25 10:45:56 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:45:57 info: Server started {"port":3000}
+2025-10-25 10:46:40 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:46:41 info: Server started {"port":3000}
+2025-10-25 10:47:01 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:47:02 info: Server started {"port":3000}
+2025-10-25 10:54:46 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:54:47 info: Server started {"port":3000}
+2025-10-25 10:55:03 info: Received SIGTERM, shutting down gracefully
+2025-10-25 10:55:04 info: Server started {"port":3000}
+2025-10-25 11:02:11 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:02:13 info: Server started {"port":3000}
+2025-10-25 11:02:21 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:02:22 info: Server started {"port":3000}
+2025-10-25 11:05:30 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:07:16 info: Server started {"port":3000}
+2025-10-25 11:08:40 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:08:41 info: Server started {"port":3000}
+2025-10-25 11:09:45 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:09:46 info: Server started {"port":3000}
+2025-10-25 11:11:29 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:11:30 info: Server started {"port":3000}
+2025-10-25 11:11:55 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:11:57 info: Server started {"port":3000}
+2025-10-25 11:12:02 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:12:03 info: Server started {"port":3000}
+2025-10-25 11:13:00 info: Twitter OAuth initiated {"state":"jcQ_RJ1u5oGUCgirG5qJkzu~gT.7.UO0"}
+2025-10-25 11:13:41 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:13:47 info: Server started {"port":3000}
+2025-10-25 11:13:52 info: Twitter OAuth initiated {"state":"Xs4Cy2zjuy.H8uCCE9zJZLqlnokop5CP"}
+2025-10-25 11:14:28 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
