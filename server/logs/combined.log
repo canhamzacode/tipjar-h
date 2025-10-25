@@ -77,3 +77,68 @@
 2025-10-25 11:13:47 info: Server started {"port":3000}
 2025-10-25 11:13:52 info: Twitter OAuth initiated {"state":"Xs4Cy2zjuy.H8uCCE9zJZLqlnokop5CP"}
 2025-10-25 11:14:28 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-25 11:29:41 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:29:42 info: Server started {"port":3000}
+2025-10-25 11:29:55 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:29:57 info: Server started {"port":3000}
+2025-10-25 11:30:09 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:30:12 info: Server started {"port":3000}
+2025-10-25 11:30:43 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:30:45 info: Server started {"port":3000}
+2025-10-25 11:31:00 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:31:02 info: Server started {"port":3000}
+2025-10-25 11:31:18 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:31:20 info: Server started {"port":3000}
+2025-10-25 11:31:31 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:31:46 info: Server started {"port":3000}
+2025-10-25 11:34:38 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:34:41 info: Server started {"port":3000}
+2025-10-25 11:36:35 info: Twitter OAuth initiated {"state":"FONL3HYG7AGH37R._Jl~L~klFcZg9~46"}
+2025-10-25 11:37:06 info: OAuth token exchange successful
+2025-10-25 11:37:06 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-25 11:37:14 info: New user created {"userId":"95476483-33bc-44d3-b350-4a61003e342a","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-25 11:37:14 info: Twitter account linked successfully {"userId":"95476483-33bc-44d3-b350-4a61003e342a","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-25 11:40:15 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:40:17 info: Server started {"port":3000}
+2025-10-25 11:41:29 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:41:31 info: Server started {"port":3000}
+2025-10-25 11:45:02 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:45:05 info: Server started {"port":3000}
+2025-10-25 11:45:32 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:45:35 info: Server started {"port":3000}
+2025-10-25 11:46:02 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:46:04 info: Server started {"port":3000}
+2025-10-25 11:46:18 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:46:20 info: Server started {"port":3000}
+2025-10-25 11:46:45 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:46:48 info: Server started {"port":3000}
+2025-10-25 11:47:01 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:47:04 info: Server started {"port":3000}
+2025-10-25 11:47:21 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:47:23 info: Server started {"port":3000}
+2025-10-25 11:47:48 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:47:51 info: Server started {"port":3000}
+2025-10-25 11:54:47 info: Received SIGTERM, shutting down gracefully
+2025-10-25 11:54:53 info: Server started {"port":3000}
+2025-10-25 12:15:12 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:15:15 info: Server started {"port":3000}
+2025-10-25 12:15:37 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:15:40 info: Server started {"port":3000}
+2025-10-25 12:15:53 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:15:55 info: Server started {"port":3000}
+2025-10-25 12:16:09 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:16:11 info: Server started {"port":3000}
+2025-10-25 12:16:23 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:16:26 info: Server started {"port":3000}
+2025-10-25 12:17:22 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:17:25 info: Server started {"port":3000}
+2025-10-25 12:17:34 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:17:37 info: Server started {"port":3000}
+2025-10-25 12:17:44 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:17:46 info: Server started {"port":3000}
+2025-10-25 12:21:12 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:21:15 info: Server started {"port":3000}
+2025-10-25 12:21:16 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:21:19 info: Server started {"port":3000}
+2025-10-25 12:22:00 info: Received SIGTERM, shutting down gracefully
+2025-10-25 12:22:02 info: Server started {"port":3000}

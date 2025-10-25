@@ -7,6 +7,8 @@ import session from "express-session";
 
 const app = express();
 
+// TODO: Upgrade to persistent session store (Redis or connect-pg-simple) for production
+// Current in-memory store will lose OAuth states on server restart
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your-secret-key-change-this",
