@@ -17,10 +17,8 @@ const Footer = () => {
 
   return (
     <footer id="contact" className="bg-primary text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-[1400px] mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-12">
-          {/* Brand Section */}
           <div className="md:col-span-2">
             <Link href="#home" className="flex items-center gap-3 mb-4 group">
               <div className="flex items-center justify-center h-12 w-12 bg-primary rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
@@ -50,12 +48,12 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 text-black">
               <Link
                 href="https://twitter.com"
                 target="_blank"
                 aria-label="Twitter"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-xl flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 bg-white rounded-xl flex items-center justify-center transition-all duration-300"
               >
                 <Twitter size={20} />
               </Link>
@@ -63,14 +61,14 @@ const Footer = () => {
                 href="https://github.com"
                 target="_blank"
                 aria-label="GitHub"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-xl flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 bg-white rounded-xl flex items-center justify-center transition-all duration-300"
               >
                 <Github size={20} />
               </Link>
               <Link
                 href="mailto:hello@tipjar.com"
                 aria-label="Email"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-xl flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 bg-white rounded-xl flex items-center justify-center transition-all duration-300"
               >
                 <Mail size={20} />
               </Link>

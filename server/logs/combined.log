@@ -142,3 +142,49 @@
 2025-10-25 12:21:19 info: Server started {"port":3000}
 2025-10-25 12:22:00 info: Received SIGTERM, shutting down gracefully
 2025-10-25 12:22:02 info: Server started {"port":3000}
+2025-10-26 19:26:48 info: Server started {"port":8000}
+2025-10-26 19:40:11 info: Received SIGINT, shutting down gracefully
+2025-10-26 21:38:26 info: Server started {"port":8000}
+2025-10-26 21:43:03 info: Twitter OAuth initiated {"state":"sETIJ_OMd1-t~AC5.iNUply57k~YrnGP"}
+2025-10-26 21:43:05 info: Twitter OAuth initiated {"state":"xQmGN4_BdPQ-FjznW-.DeXUmdUivDmE5"}
+2025-10-26 21:49:36 info: Twitter OAuth initiated {"state":"-UOrCDEa7vIXst0V4SHz3AZNiIv5hP_3"}
+2025-10-26 21:52:28 info: Twitter OAuth initiated {"state":"LrQvSjk8hUJRfvdyLB2hcGHzAoOHqQbf"}
+2025-10-26 21:53:37 info: Received SIGINT, shutting down gracefully
+2025-10-26 21:55:52 info: Server started {"port":8000}
+2025-10-26 21:55:58 info: Twitter OAuth initiated {"state":"f6Ro-GR7SmvPXFzsZdctVphoV4IHJJoL"}
+2025-10-26 21:57:30 info: Twitter OAuth initiated {"state":"o3mSi8pKBYIvdYPv_IsfIdsGMlitbNSA"}
+2025-10-26 21:59:10 info: Twitter OAuth initiated {"state":"S~DE_hzH~wtHXSEGGt.dFr5Rr6trWY5R"}
+2025-10-26 22:00:13 info: Twitter OAuth initiated {"state":"VmweBsvYy1lzI4Tc9YSRz36eTnH3QTZT"}
+2025-10-26 22:00:22 warn: Invalid session - OAuth data not found
+2025-10-26 22:00:44 info: Received SIGINT, shutting down gracefully
+2025-10-26 22:00:44 info: Received SIGINT, shutting down gracefully
+2025-10-26 22:00:45 info: Received SIGINT, shutting down gracefully
+2025-10-26 22:00:49 info: Server started {"port":8000}
+2025-10-26 22:01:12 info: Twitter OAuth initiated {"state":"10mTO4VUj9fHpjgU~s9ngu5VBAHEu2G5"}
+2025-10-26 22:01:17 warn: Invalid session - OAuth data not found
+2025-10-26 22:03:56 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:03:59 info: Server started {"port":8000}
+2025-10-26 22:05:06 info: 
+    url: https://x.com/i/oauth2/authorize?response_type=code&client_id=YTlaY3l3NWtSY0pjNWJFMEFrVkM6MTpjaQ&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapi%2Fv1%2Fauth%2Ftwitter%2Fcallback&state=b1jLIJ.FJciNj3FHvEGqaGToK3fnZ7gm&code_challenge=r4V4eKxD5IZ67YEA13SLyyejGUI0EyFvw_mQT10Mv5Y&code_challenge_method=s256&scope=tweet.read%20users.read%20offline.access%20tweet.write,codeVerifier: 7tHW4qW8zZDsBJFFLm0GAZr1UqH8oMLGeVInNjqYoGiaMaboVnkHcqbQOS8bizr91pq_JK0PZjOdIHlh6sFhR7eBD~9OEuxaM1aHMSho1zsXljzWSwlj37nZuG2e1rSt, state: b1jLIJ.FJciNj3FHvEGqaGToK3fnZ7gm 
+2025-10-26 22:05:06 info: Twitter OAuth initiated {"state":"b1jLIJ.FJciNj3FHvEGqaGToK3fnZ7gm"}
+2025-10-26 22:05:12 info: OAuth token exchange successful
+2025-10-26 22:05:13 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-26 22:05:26 info: User updated successfully {"userId":"95476483-33bc-44d3-b350-4a61003e342a","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-26 22:05:26 error: Failed to reconcile pending tips {"twitterHandle":"tazmahcrypt","receiverId":"95476483-33bc-44d3-b350-4a61003e342a","error":"Failed query: select \"id\", \"receiver_twitter\", \"amount\", \"token\", \"sender_id\", \"status\", \"receiver_id\", \"reconciled_at\", \"created_at\" from \"pending_tips\" \"pending_tips\" where \"pending_tips\".\"receiver_twitter\" = $1\nparams: tazmahcrypt","stack":"Error: Failed query: select \"id\", \"receiver_twitter\", \"amount\", \"token\", \"sender_id\", \"status\", \"receiver_id\", \"reconciled_at\", \"created_at\" from \"pending_tips\" \"pending_tips\" where \"pending_tips\".\"receiver_twitter\" = $1\nparams: tazmahcrypt\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async reconcilePendingTipsForHandle (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:148:22)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:110:27)"}
+2025-10-26 22:07:04 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:09:37 info: Server started {"port":8000}
+2025-10-26 22:09:43 info: 
+    url: https://x.com/i/oauth2/authorize?response_type=code&client_id=YTlaY3l3NWtSY0pjNWJFMEFrVkM6MTpjaQ&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapi%2Fv1%2Fauth%2Ftwitter%2Fcallback&state=o90YINe7YePcSbJaBlxCSqr9jH-wscO0&code_challenge=L9QfYFOy6pxOzIycvXsvQWi4mWIthK5Nby9PP86qphU&code_challenge_method=s256&scope=tweet.read%20users.read%20offline.access%20tweet.write,codeVerifier: K-cScz6GY4G3WGmvTNDvLF6Weu2XJNH54RBEPnIoApI7r1HIfEbhhpvHyzYya_4ZU7w8YBCqKUwpZtiaUWGE-vSajbZ7ApnH9Mh.P5mgcd4UF7tP78kfg8wEc5aTj-h-, state: o90YINe7YePcSbJaBlxCSqr9jH-wscO0 
+2025-10-26 22:09:43 info: Twitter OAuth initiated {"state":"o90YINe7YePcSbJaBlxCSqr9jH-wscO0"}
+2025-10-26 22:09:48 info: OAuth token exchange successful
+2025-10-26 22:09:49 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-26 22:09:56 info: New user created {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-26 22:09:57 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-26 22:10:49 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:10:56 info: Server started {"port":8000}
+2025-10-26 22:18:06 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:18:09 info: Server started {"port":8000}
+2025-10-26 22:19:53 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:19:54 info: Server started {"port":8000}
+2025-10-26 22:20:11 info: Received SIGTERM, shutting down gracefully
+2025-10-26 22:20:13 info: Server started {"port":8000}

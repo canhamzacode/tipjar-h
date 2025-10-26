@@ -4,6 +4,7 @@ import { errorHandler } from "./middleware";
 import appROute from "./routes";
 import { logger } from "./services";
 import session from "express-session";
+import cors from "cors";
 
 const app = express();
 
@@ -19,6 +20,12 @@ app.use(
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
     },
+  }),
+);
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
   }),
 );
 app.use(express.json());

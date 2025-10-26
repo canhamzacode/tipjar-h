@@ -24,7 +24,7 @@ const HowItWorks = () => {
 
   return (
     <section id="howitworks" className="py-20 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <span className="text-sm font-semibold text-primary bg-blue-50 px-4 py-2 rounded-full">
@@ -42,7 +42,6 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, i) => (
             <div key={i} className="relative group">
-              {/* Connector Line (hidden on mobile, shown between cards on desktop) */}
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-12 left-[calc(100%+1rem)] w-8 h-0.5 bg-gray-200 z-0"></div>
               )}

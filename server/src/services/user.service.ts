@@ -173,8 +173,14 @@ export const reconcilePendingTipsForHandle = async (
           status: "confirmed",
         });
 
-        // Delete the pending tip
-        await db.delete(pending_tips).where(eq(pending_tips.id, pending.id));
+        await db
+          .update(pending_tips)
+          .set({
+            status: "confirmed",
+            receiver_id: receiverId,
+            reconciled_at: new Date(),
+          })
+          .where(eq(pending_tips.id, pending.id));
 
         reconciledCount++;
 

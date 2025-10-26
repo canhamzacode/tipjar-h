@@ -1,8 +1,21 @@
+'use client';
 import Link from 'next/link';
 import { HelpingHand, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { AuthQueries } from '@/api';
 
 export default function Navbar() {
+  const { mutateAsync: initiateTwitterAuth } =
+    AuthQueries.useInitateTwitterOath();
+
+  const handleInitiateTwitterAuth = async () => {
+    const res = await initiateTwitterAuth();
+
+    if (res?.data?.url) {
+      window.location.href = res.data.url;
+    }
+  };
+
   const Links = [
     { name: 'Home', href: '/' },
     { name: 'Features', href: '/#features' },
@@ -50,12 +63,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/api/v1/auth/twitter/initiate">
-            <Button>
-              <Twitter />
-              Connect
-            </Button>
-          </Link>
+          <Button onClick={handleInitiateTwitterAuth}>
+            <Twitter />
+            Connect
+          </Button>
         </div>
       </div>
     </nav>

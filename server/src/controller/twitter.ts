@@ -89,7 +89,6 @@ export const handleTwitterCallback = async (
     username: userObject.username,
   });
 
-  // Upsert user in database
   const savedUser = await upsertUserFromTwitter({
     twitterId: userObject.id,
     twitterHandle: userObject.username,
@@ -105,16 +104,13 @@ export const handleTwitterCallback = async (
     throw new Error("Failed to save user to database");
   }
 
-  // Reconcile any pending tips for this user
   const reconciledCount = await reconcilePendingTipsForHandle(
     userObject.username,
     savedUser.id,
   );
 
-  // Clear OAuth session data
   delete req.session.oauth;
 
-  // Generate JWT tokens for the user
   const tokens = generateTokenPair({
     userId: savedUser.id,
     twitterId: savedUser.twitter_id!,
@@ -127,21 +123,17 @@ export const handleTwitterCallback = async (
     reconciledTips: reconciledCount,
   });
 
-  // Return JWT tokens and user info
-  return res.status(HTTP_STATUS.OK).json({
-    message: "Twitter account linked successfully",
-    data: {
+  const redirectUrl =
+    `${process.env.CLIENT_URL}/auth/callback?` +
+    new URLSearchParams({
       access_token: tokens.accessToken,
       refresh_token: tokens.refreshToken,
-      user: {
-        id: savedUser.id,
-        twitter_handle: savedUser.twitter_handle,
-        name: savedUser.name,
-        profile_image_url: savedUser.profile_image_url,
-      },
-      reconciled_tips: reconciledCount,
-    },
-  });
+      twitter_handle: savedUser.twitter_handle!,
+      name: savedUser.name || "",
+      profile_image_url: savedUser.profile_image_url || "",
+    }).toString();
+
+  return res.redirect(redirectUrl);
 };
 
 export const getMe = async (
@@ -166,7 +158,6 @@ export const getMe = async (
 
   logger.debug("User info retrieved", { userId: user.id });
 
-  // Return user info (without sensitive tokens)
   return res.status(HTTP_STATUS.OK).json({
     message: "User info retrieved successfully",
     data: {

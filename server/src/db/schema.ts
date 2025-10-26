@@ -54,6 +54,9 @@ export const pending_tips = pgTable("pending_tips", {
   amount: text("amount"),
   token: varchar("token", { length: 20 }),
   sender_id: uuid("sender_id").references(() => users.id),
+  status: transactionStatus("status").default("pending"),
+  receiver_id: uuid("receiver_id").references(() => users.id),
+  reconciled_at: timestamp("reconciled_at"),
   created_at: timestamp("created_at").defaultNow(),
 });
 

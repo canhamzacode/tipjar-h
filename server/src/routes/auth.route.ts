@@ -15,7 +15,6 @@ import {
 
 const router = Router();
 
-// OAuth routes
 router.get("/twitter", asyncHandler(initiateTwitterOAuth));
 router.get(
   "/twitter/callback",
@@ -23,7 +22,6 @@ router.get(
   asyncHandler(handleTwitterCallback),
 );
 
-// Protected routes
 router.get("/me", authenticate, asyncHandler(getMe));
 router.post(
   "/refresh",
