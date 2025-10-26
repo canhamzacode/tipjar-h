@@ -19,7 +19,7 @@ export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
   twitter_handle: varchar("twitter_handle", { length: 50 }).unique(),
   twitter_id: varchar("twitter_id", { length: 50 }),
-  wallet_address: varchar("wallet_address", { length: 66 }),
+  wallet_address: varchar("wallet_address", { length: 66 }).unique(),
   wallet_type: walletType("wallet_type").default("non-custodial"),
   name: varchar("name", { length: 100 }),
   profile_image_url: text("profile_image_url"),

@@ -144,10 +144,6 @@ export const handleTwitterCallback = async (
   });
 };
 
-/**
- * Get authenticated user information
- * Protected route - requires valid JWT token
- */
 export const getMe = async (
   req: Request,
   res: Response,
@@ -159,7 +155,6 @@ export const getMe = async (
     });
   }
 
-  // Fetch full user data from database
   const user = await findUserById(req.user.userId);
 
   if (!user) {
@@ -190,10 +185,6 @@ export const getMe = async (
   });
 };
 
-/**
- * Refresh access token using refresh token
- * Returns new access token
- */
 export const refreshAccessToken = async (
   req: Request,
   res: Response,
@@ -207,7 +198,6 @@ export const refreshAccessToken = async (
     });
   }
 
-  // Verify refresh token
   const decoded = verifyRefreshToken(refresh_token);
 
   if (!decoded) {
@@ -217,7 +207,6 @@ export const refreshAccessToken = async (
     });
   }
 
-  // Verify user still exists
   const user = await findUserById(decoded.userId);
 
   if (!user) {
@@ -229,7 +218,6 @@ export const refreshAccessToken = async (
     });
   }
 
-  // Generate new token pair
   const tokens = generateTokenPair({
     userId: user.id,
     twitterId: user.twitter_id!,
@@ -247,12 +235,6 @@ export const refreshAccessToken = async (
   });
 };
 
-/**
- * Logout user
- * Note: With JWT, we can't truly "invalidate" tokens without a blacklist
- * This endpoint is mainly for client-side token cleanup
- * For production, consider implementing a token blacklist in Redis
- */
 export const logout = async (
   req: Request,
   res: Response,
