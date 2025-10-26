@@ -1,0 +1,42 @@
+import Link from 'next/link';
+import { Twitter, Check } from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '../ui/button';
+
+const Hero = () => {
+  return (
+    <section className="w-full min-h-[70vh] md:px-0 px-6">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-2 gap-5">
+        <div className="flex items-center">
+          <div className="flex flex-col gap-4">
+            <h1 className="md:text-5xl text-4xl font-bold text-primary leading-[60px]">
+              TipJar Send Tokens <br /> Spread Kindness
+            </h1>
+            <div className="mt-4 ">
+              <p className="text-lg  text-gray-700">
+                Seamlessly send and receive micro or macro tips with <br /> your
+                Twitter community. Fast, friendly, and built on trust.
+              </p>
+              <Button size="lg" className="text-lg mt-6">
+                <Twitter />
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-[1200px] mx-auto mt-10">
+          <Image
+            src="/tipJarApp.png"
+            width={1200}
+            height={400}
+            alt="App Screenshot"
+            className="rounded-2xl shadow-md border"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
