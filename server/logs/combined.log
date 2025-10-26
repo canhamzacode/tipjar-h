@@ -188,3 +188,93 @@
 2025-10-26 22:19:54 info: Server started {"port":8000}
 2025-10-26 22:20:11 info: Received SIGTERM, shutting down gracefully
 2025-10-26 22:20:13 info: Server started {"port":8000}
+2025-10-26 22:22:18 info: Twitter OAuth initiated {"state":"TX-nNZjCHrGKthr5WAPR.Gxl-V-m-Tr~"}
+2025-10-26 22:22:24 info: OAuth token exchange successful
+2025-10-26 22:22:25 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-26 22:22:33 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-26 22:22:33 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-26 22:37:09 error: Error finding user by id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserById (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:8:18)\n    at async getMe (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:150:16)"}
+2025-10-26 22:37:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:37:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:37:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:37:45 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:38:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:38:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:38:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:38:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:41:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:41:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:42:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:42:09 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 22:42:09 error: Error finding user by id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserById (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:8:18)\n    at async refreshAccessToken (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:201:16)"}
+2025-10-26 22:55:38 error: Error finding user by id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserById (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:8:18)\n    at async getMe (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:150:16)"}
+2025-10-26 22:59:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 22:59:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:00:00 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:00:01 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:00:01 warn: Invalid access token
+2025-10-26 23:00:01 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:04:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:04:12 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:04:12 warn: Invalid access token
+2025-10-26 23:04:12 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:04:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:04:49 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:04:49 warn: Invalid access token
+2025-10-26 23:04:49 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:04:51 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:04:52 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:04:52 warn: Invalid access token
+2025-10-26 23:04:52 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:04:56 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:04:57 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:04:57 warn: Invalid access token
+2025-10-26 23:04:57 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:05:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:05:41 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:05:41 warn: Invalid access token
+2025-10-26 23:05:41 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:05:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:05:42 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:05:42 warn: Invalid access token
+2025-10-26 23:05:42 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:05:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:05:44 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:05:44 warn: Invalid access token
+2025-10-26 23:05:44 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:05:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:05:50 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:05:50 warn: Invalid access token
+2025-10-26 23:05:50 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:05:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:05:59 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:05:59 warn: Invalid access token
+2025-10-26 23:05:59 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:00 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:00 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:00 warn: Invalid access token
+2025-10-26 23:06:00 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:02 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:02 warn: Invalid access token
+2025-10-26 23:06:02 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:08 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:08 warn: Invalid access token
+2025-10-26 23:06:08 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:16 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:16 warn: Invalid access token
+2025-10-26 23:06:16 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:17 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:17 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:17 warn: Invalid access token
+2025-10-26 23:06:17 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:19 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:19 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:06:20 warn: Invalid access token
+2025-10-26 23:06:20 warn: Invalid or expired access token {"path":"/me"}
+2025-10-26 23:06:24 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:06:24 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:22:43 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:22:46 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}

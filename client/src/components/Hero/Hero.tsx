@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 
 const Hero = () => {
   return (
-    <section className="w-full min-h-[70vh] md:px-0 px-6">
+    <section className="w-full min-h-[70vh] px-6">
       <div className="max-w-[1400px] mx-auto grid grid-cols-2 gap-5">
         <div className="flex items-center">
           <div className="flex flex-col gap-4">

@@ -24,7 +24,7 @@ export const AuthQueries = {
   useRefreshUserToken: () =>
     useMutation({
       mutationKey: [endpoints.refreshUserToken.key],
-      mutationFn: async (data: {}) => {
+      mutationFn: async (data: { refresh_token: string }) => {
         const res = await apiClient.post(endpoints.refreshUserToken.url);
         return res.data;
       },

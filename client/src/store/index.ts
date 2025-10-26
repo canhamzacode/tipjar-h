@@ -1,0 +1,45 @@
+import { create } from 'zustand';
+
+import { createAuthSlice } from './userAuthSlice';
+
+import type { AuthState } from './userAuthSlice';
+
+type AppState = AuthState;
+
+const useAppState = create<AppState>((...a) => ({
+  ...createAuthSlice(...a),
+}));
+
+const shallowEqual = <T extends object>(a: T, b: T): boolean => {
+  const keysA = Object.keys(a) as (keyof T)[];
+  const keysB = Object.keys(b) as (keyof T)[];
+
+  if (keysA.length !== keysB.length) return false;
+
+  return keysA.every((key) => a[key] === b[key]);
+};
+
+const createSelector =
+  <T extends object>() =>
+  () => {
+    let previousState: T | undefined;
+    let previousResult: T | undefined;
+
+    return useAppState((state) => {
+      const nextState = { ...state } as T;
+
+      if (
+        previousState &&
+        previousResult &&
+        shallowEqual(nextState, previousState)
+      ) {
+        return previousResult;
+      }
+
+      previousState = nextState;
+      previousResult = nextState;
+      return nextState;
+    });
+  };
+
+export const useAuthState = createSelector<AuthState>();
