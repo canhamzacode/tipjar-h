@@ -278,3 +278,14 @@
 2025-10-26 23:06:24 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
 2025-10-26 23:22:43 warn: Missing or invalid Authorization header {"path":"/me"}
 2025-10-26 23:22:46 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-26 23:39:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-26 23:39:16 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-27 00:20:18 info: Received SIGINT, shutting down gracefully
+2025-10-27 16:48:57 info: Server started {"port":8000}
+2025-10-27 16:49:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 16:49:19 info: Twitter OAuth initiated {"state":"7Cex4ubjXfdnw6_~ktqC1TvAB7OqncYN"}
+2025-10-27 16:49:27 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-27 16:49:37 info: OAuth token exchange successful
+2025-10-27 16:49:37 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-27 16:49:39 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-27 16:49:39 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}

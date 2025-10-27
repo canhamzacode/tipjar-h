@@ -6,10 +6,10 @@ import { Button } from '../ui/button';
 const Hero = () => {
   return (
     <section className="w-full min-h-[70vh] px-6">
-      <div className="max-w-[1400px] mx-auto grid grid-cols-2 gap-5">
+      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 grid-cols-1 py-6 gap-5">
         <div className="flex items-center">
           <div className="flex flex-col gap-4">
-            <h1 className="md:text-5xl text-4xl font-bold text-primary leading-[60px]">
+            <h1 className="md:text-5xl text-4xl font-bold text-primary md:leading-[60px] leading-[35px]">
               TipJar Send Tokens <br /> Spread Kindness
             </h1>
             <div className="mt-4 ">
@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-[1200px] mx-auto mt-10">
+        <div className="w-full max-w-[1200px] mx-auto md:mt-10 mt-4">
           <Image
             src="/tipJarApp.png"
             width={1200}
