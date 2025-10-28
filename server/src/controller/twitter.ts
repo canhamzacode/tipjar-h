@@ -89,8 +89,10 @@ export const handleTwitterCallback = async (
     username: userObject.username,
   });
 
+  const twitterId = String(userObject.id);
+
   const savedUser = await upsertUserFromTwitter({
-    twitterId: userObject.id,
+    twitterId,
     twitterHandle: userObject.username,
     name: userObject.name || null,
     profileImageUrl: (userObject as any).profile_image_url || null,

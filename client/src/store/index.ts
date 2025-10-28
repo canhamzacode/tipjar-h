@@ -1,13 +1,15 @@
 import { create } from 'zustand';
 
 import { createAuthSlice } from './userAuthSlice';
+import { createWalletSlice, WalletState } from './useWalletSlice';
 
 import type { AuthState } from './userAuthSlice';
 
-type AppState = AuthState;
+type AppState = AuthState & WalletState;
 
 const useAppState = create<AppState>((...a) => ({
   ...createAuthSlice(...a),
+  ...createWalletSlice(...a),
 }));
 
 const shallowEqual = <T extends object>(a: T, b: T): boolean => {
@@ -43,3 +45,5 @@ const createSelector =
   };
 
 export const useAuthState = createSelector<AuthState>();
+
+export const useWalletState = createSelector<WalletState>();

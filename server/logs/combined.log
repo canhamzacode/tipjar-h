@@ -289,3 +289,364 @@
 2025-10-27 16:49:37 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
 2025-10-27 16:49:39 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
 2025-10-27 16:49:39 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-27 22:15:26 info: Server started {"port":8000}
+2025-10-27 22:17:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:17:26 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-27 22:34:30 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:40 error: Error finding user by id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserById (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:8:18)\n    at async refreshAccessToken (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:201:16)"}
+2025-10-27 22:34:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:43 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:34:56 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:13 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:19 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:24 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:25 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:32 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:35:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:21 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:22 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:36:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:58:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:59:00 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:59:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:59:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 22:59:19 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:45 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:50 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:54 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:06:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:03 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:05 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:21 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:22 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:25 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:30 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:46 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:49 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:51 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:54 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:07:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:00 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:03 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:21 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:24 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:08:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:18:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:05 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:46 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:19:54 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:03 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:04 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:17 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:20:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:20 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:21 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:24 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:30 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:32 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:37 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:43 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:46 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:49 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:51 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:56 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:34:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:04 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:05 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:13 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:19 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:20 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:21 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:22 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:25 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:28 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:32 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:36 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:37 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:35:46 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:28 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:36 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:46 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:50 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:51 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:56 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:43:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:05 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:13 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:36 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:41 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:43 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:45 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:48 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:50 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:44:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:45:12 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:45:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:45:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:20 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:34 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:39 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:50 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:48:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:49:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:51:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:51:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:51:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:51:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:00 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:02 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:05 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:07 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:13 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:20 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:22 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:25 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:30 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:38 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:52:43 info: Received SIGINT, shutting down gracefully
+2025-10-27 23:55:21 info: Server started {"port":8000}
+2025-10-27 23:55:26 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:28 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:37 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:43 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:44 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:45 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:49 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:51 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:53 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:55:59 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:01 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:03 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:04 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:06 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:10 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:13 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:14 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:16 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:18 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:20 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:25 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:27 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:29 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:31 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:35 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:37 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:40 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:45 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:47 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:49 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:52 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:54 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:55 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:57 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:56:58 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:57:00 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-27 23:57:04 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:00:08 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:00:09 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:00:11 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:00:15 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:03:14 info: Twitter OAuth initiated {"state":"qFNv9SBt0HlpdGct.e_84XvpcShr0zlK"}
+2025-10-28 00:03:31 info: OAuth token exchange successful
+2025-10-28 00:03:31 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-28 00:03:42 error: Error finding user by twitter_id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:92:21)"}
+2025-10-28 00:03:42 error: Failed to upsert user {"twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt","error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:92:21)"}
+2025-10-28 00:05:46 info: Received SIGTERM, shutting down gracefully
+2025-10-28 00:05:50 info: Server started {"port":8000}
+2025-10-28 00:06:45 info: Received SIGTERM, shutting down gracefully
+2025-10-28 00:06:48 info: Server started {"port":8000}
+2025-10-28 00:07:51 info: Received SIGINT, shutting down gracefully
+2025-10-28 00:08:17 info: Server started {"port":8000}
+2025-10-28 00:08:18 info: Received SIGTERM, shutting down gracefully
+2025-10-28 00:08:21 info: Server started {"port":8000}
+2025-10-28 00:08:22 info: Received SIGTERM, shutting down gracefully
+2025-10-28 00:08:24 info: Server started {"port":8000}
+2025-10-28 00:08:36 info: Twitter OAuth initiated {"state":"HUPhvq5zBDQPxDegM3~UQApfS6zMrVIJ"}
+2025-10-28 00:08:56 info: OAuth token exchange successful
+2025-10-28 00:08:57 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-28 00:09:05 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-28 00:09:05 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-28 00:24:23 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-28 00:24:29 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-28 00:27:40 info: Twitter OAuth initiated {"state":"E3mu5P-y10a2YgMMw4~egFSgNRdufn1o"}
+2025-10-28 00:40:11 info: Twitter OAuth initiated {"state":"wV_JRntkR9g0sSklfbkgiIygtQGw0b-3"}
+2025-10-28 00:40:22 info: OAuth token exchange successful
+2025-10-28 00:40:23 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-28 00:40:24 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-28 00:40:25 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}

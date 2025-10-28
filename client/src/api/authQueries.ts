@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { endpoints } from './endpoints';
 import { apiClient } from './apiClient';
+import TokenManager from '@/utils/cookies';
 
 export const AuthQueries = {
   useInitateTwitterOath: () =>
@@ -12,15 +13,20 @@ export const AuthQueries = {
         return res.data;
       },
     }),
-  useGetCurrentUser: () =>
-    useQuery({
-      queryKey: [endpoints.getCurrentUser.key],
+  useGetCurrentUser: () => {
+    const token = TokenManager.getAccessToken();
+
+    return useQuery({
+      queryKey: [endpoints.getCurrentUser.key, token],
       queryFn: async () => {
         const res = await apiClient.get(endpoints.getCurrentUser.url);
-
         return res.data;
       },
-    }),
+      enabled: !!token,
+      retry: false,
+    });
+  },
+
   useRefreshUserToken: () =>
     useMutation({
       mutationKey: [endpoints.refreshUserToken.key],

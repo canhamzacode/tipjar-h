@@ -21,7 +21,7 @@ export const findUserById = async (id: string) => {
 export const findUserByTwitterId = async (twitterId: string) => {
   try {
     const user = await db.query.users.findFirst({
-      where: eq(users.twitter_id, twitterId),
+      where: eq(users.twitter_id, String(twitterId)),
     });
     return user || null;
   } catch (error) {

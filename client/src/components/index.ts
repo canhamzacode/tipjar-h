@@ -5,3 +5,4 @@ export * from './HowItWorks';
 export * from './Footer';
 export * from './Navbar';
 export * from './Layout';
+export * from './HashConnectButton';
