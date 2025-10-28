@@ -1,10 +1,11 @@
 import { Wallet, Loader2 } from 'lucide-react';
 import { useWalletState } from '@/store';
+import { useWalletConnect } from '@/hooks';
 import { Button } from '@/components/ui/button';
 
 const HashConnectButton = () => {
-  const { accountId, isConnected, isConnecting, connect, disconnect } =
-    useWalletState();
+  const { disconnect } = useWalletState();
+  const { connect, isConnecting, accountId, isConnected } = useWalletConnect();
 
   const formatAccountId = (id: string) => {
     if (id.length <= 12) return id;

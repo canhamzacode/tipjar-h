@@ -5,8 +5,8 @@ import { connectWallet } from "../controller";
 
 const router = Router();
 
-router.get(
-  "/wallet/connect",
+router.post(
+  "/connect",
   authenticate,
   validate(connectWalletSchema),
   asyncHandler(connectWallet),

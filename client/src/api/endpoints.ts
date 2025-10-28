@@ -48,4 +48,10 @@ export const endpoints = {
     key: 'retryTip',
     url: '/tips/retry',
   },
+
+  // wallet connect
+  walletConnect: {
+    key: 'walletConnect',
+    url: '/wallet/connect',
+  },
 };

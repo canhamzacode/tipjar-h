@@ -21,7 +21,7 @@ const AuthCallbackContent = () => {
           refreshToken: refresh_token ?? null,
         });
         setStatus('success');
-        setTimeout(() => router.replace('/'), 900);
+        setTimeout(() => router.push('/dashboard'), 900);
       } catch (err) {
         console.error('Failed to persist tokens', err);
         setStatus('error');
@@ -33,7 +33,12 @@ const AuthCallbackContent = () => {
 
   const STATUS_MAP: Record<
     typeof status,
-    { title: string; message: string; Icon: React.ComponentType<{ className?: string }>; iconClass?: string }
+    {
+      title: string;
+      message: string;
+      Icon: React.ComponentType<{ className?: string }>;
+      iconClass?: string;
+    }
   > = {
     loading: {
       title: 'Connecting your Twitter account…',
@@ -80,19 +85,23 @@ const AuthCallbackContent = () => {
 
 const AuthCallbackPage = () => {
   return (
-    <Suspense fallback={
-      <div className="w-full h-screen flex items-center justify-center">
-        <div className="w-[523px] min-h-[320px] shadow rounded flex flex-col items-center justify-center gap-6 p-4 border">
-          <div className="w-[100px] h-[100px] bg-primary/10 rounded-full flex items-center justify-center">
-            <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
-          </div>
-          <div className="w-[80%] flex flex-col gap-6 items-center text-center mx-auto">
-            <h3 className="text-xl font-semibold">Loading...</h3>
-            <p className="text-center text-slate-500">Please wait while we process your authentication.</p>
+    <Suspense
+      fallback={
+        <div className="w-full h-screen flex items-center justify-center">
+          <div className="w-[523px] min-h-[320px] shadow rounded flex flex-col items-center justify-center gap-6 p-4 border">
+            <div className="w-[100px] h-[100px] bg-primary/10 rounded-full flex items-center justify-center">
+              <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+            </div>
+            <div className="w-[80%] flex flex-col gap-6 items-center text-center mx-auto">
+              <h3 className="text-xl font-semibold">Loading...</h3>
+              <p className="text-center text-slate-500">
+                Please wait while we process your authentication.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    }>
+      }
+    >
       <AuthCallbackContent />
     </Suspense>
   );

@@ -1,5 +1,4 @@
 import type { StateCreator } from 'zustand';
-// import { connectWallet, disconnectWallet } from '@/lib/hashconnect';
 
 export type WalletState = {
   accountId: string | null;
@@ -7,6 +6,7 @@ export type WalletState = {
   isConnecting: boolean;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
+  rehydrateConnection: () => Promise<void>;
 };
 
 export const createWalletSlice: StateCreator<WalletState> = (set) => ({
@@ -44,7 +44,29 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
       await disconnectWallet();
       set({ accountId: null, isConnected: false });
     } catch {
-      // Silent fail for disconnect
+    }
+  },
+
+  rehydrateConnection: async () => {
+    if (typeof window === 'undefined') return;
+
+    const currentState = (set as unknown as { getState?: () => WalletState }).getState?.() || {} as WalletState;
+    
+    if (!currentState.accountId || currentState.isConnecting) {
+      return;
+    }
+
+    try {
+      const { getAccountIds } = await import('../lib/hashconnect');
+      const connectedAccountIds = getAccountIds();
+      
+      if (connectedAccountIds && connectedAccountIds.includes(currentState.accountId)) {
+        set({ isConnected: true });
+      } else {
+        set({ accountId: null, isConnected: false });
+      }
+    } catch {
+      set({ accountId: null, isConnected: false });
     }
   },
 });
