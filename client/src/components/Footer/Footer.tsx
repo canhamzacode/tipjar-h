@@ -9,11 +9,6 @@ const Footer = () => {
     { name: 'About', href: '#about' },
   ];
 
-  const legalLinks = [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Support', href: '#' },
-  ];
 
   return (
     <footer id="contact" className="bg-primary text-white">

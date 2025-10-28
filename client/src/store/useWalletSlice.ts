@@ -17,7 +17,7 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
   connect: async () => {
     if (typeof window === 'undefined') return;
 
-    const currentState = (set as any).getState?.() || {};
+    const currentState = (set as unknown as { getState?: () => WalletState }).getState?.() || {} as WalletState;
     if (currentState.isConnecting) {
       return;
     }
@@ -43,7 +43,7 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
       const { disconnectWallet } = await import('../lib/hashconnect');
       await disconnectWallet();
       set({ accountId: null, isConnected: false });
-    } catch (error) {
+    } catch {
       // Silent fail for disconnect
     }
   },

@@ -663,3 +663,4 @@
 2025-10-28 01:29:51 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
 2025-10-28 01:29:55 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
 2025-10-28 01:29:55 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-28 01:43:21 info: Received SIGINT, shutting down gracefully

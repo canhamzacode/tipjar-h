@@ -1,10 +1,10 @@
 'use client';
 import { useSearchParams, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Loader2, CheckCircle, XCircle } from 'lucide-react';
 import TokenManager from '@/utils/cookies';
 
-const AuthCallbackPage = () => {
+const AuthCallbackContent = () => {
   const searchParams = useSearchParams();
   const access_token = searchParams.get('access_token');
   const refresh_token = searchParams.get('refresh_token');
@@ -33,7 +33,7 @@ const AuthCallbackPage = () => {
 
   const STATUS_MAP: Record<
     typeof status,
-    { title: string; message: string; Icon: any; iconClass?: string }
+    { title: string; message: string; Icon: React.ComponentType<{ className?: string }>; iconClass?: string }
   > = {
     loading: {
       title: 'Connecting your Twitter account…',
@@ -75,6 +75,26 @@ const AuthCallbackPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const AuthCallbackPage = () => {
+  return (
+    <Suspense fallback={
+      <div className="w-full h-screen flex items-center justify-center">
+        <div className="w-[523px] min-h-[320px] shadow rounded flex flex-col items-center justify-center gap-6 p-4 border">
+          <div className="w-[100px] h-[100px] bg-primary/10 rounded-full flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+          </div>
+          <div className="w-[80%] flex flex-col gap-6 items-center text-center mx-auto">
+            <h3 className="text-xl font-semibold">Loading...</h3>
+            <p className="text-center text-slate-500">Please wait while we process your authentication.</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <AuthCallbackContent />
+    </Suspense>
   );
 };
 

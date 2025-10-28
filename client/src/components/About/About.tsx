@@ -24,8 +24,8 @@ const About = () => {
             </h2>
             <p className="text-blue-50 text-lg leading-relaxed mb-6">
               TipJar is built to empower creators and communities to appreciate
-              each other effortlessly. Whether it's a thoughtful reply, an
-              amazing design, or a random act of kindness send love instantly
+              each other effortlessly. Whether it&apos;s a thoughtful reply, an
+              amazing design, or a random act of kindness — send love instantly
               through tokens and let generosity flow across the web.
             </p>
             <p className="text-blue-100 text-base leading-relaxed">

@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { Twitter, Check } from 'lucide-react';
 import Image from 'next/image';
+import { Twitter } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const Hero = () => {

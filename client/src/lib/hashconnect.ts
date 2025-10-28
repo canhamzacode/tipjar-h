@@ -52,13 +52,13 @@ export async function connectWallet(): Promise<string[]> {
         reject(new Error('Connection timeout - no wallet responded within 2 minutes'));
       }, 120000);
 
-      hc.pairingEvent.once((data: any) => {
+      hc.pairingEvent.once((data: { accountIds?: string[] }) => {
         clearTimeout(timeout);
         isConnecting = false;
         
         if (data && data.accountIds && data.accountIds.length > 0) {
           const ids = data.accountIds || [];
-          resolve(ids.map((id: any) => id.toString()));
+          resolve(ids.map((id: string) => id.toString()));
         } else {
           reject(new Error('No applicable accounts found. Please ensure your wallet has testnet accounts and try again.'));
         }
