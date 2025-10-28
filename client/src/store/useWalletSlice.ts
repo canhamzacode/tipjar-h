@@ -78,15 +78,24 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
     }
 
     try {
-      const { getAccountIds } = await import('@/lib/hashconnect');
-      const connectedAccountIds = getAccountIds();
+      const { checkAndRestoreConnection, getAccountIds } = await import('@/lib/hashconnect');
+      const isConnected = await checkAndRestoreConnection();
       
-      if (connectedAccountIds && connectedAccountIds.includes(currentState.accountId)) {
-        set({ isConnected: true });
+      if (isConnected) {
+        const connectedAccountIds = getAccountIds();
+        if (connectedAccountIds && connectedAccountIds.includes(currentState.accountId)) {
+          set({ isConnected: true });
+        } else if (connectedAccountIds && connectedAccountIds.length > 0) {
+          // Account changed, update to the new one
+          set({ accountId: connectedAccountIds[0], isConnected: true });
+        } else {
+          set({ accountId: null, isConnected: false });
+        }
       } else {
         set({ accountId: null, isConnected: false });
       }
     } catch (error) {
+      console.error('Failed to rehydrate connection:', error);
       set({ accountId: null, isConnected: false });
     }
   },

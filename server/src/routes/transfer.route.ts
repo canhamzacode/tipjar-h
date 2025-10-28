@@ -1,7 +1,11 @@
 import { Router } from "express";
 import { initiateTransfer, completeTransfer } from "../controller/transfer";
-import { authenticate } from "../middleware";
-import { asyncHandler } from "../utils";
+import { authenticate, validate } from "../middleware";
+import {
+  asyncHandler,
+  connectWalletSchema,
+  transferTokenSchema,
+} from "../utils";
 
 const router = Router();
 
@@ -9,14 +13,11 @@ const router = Router();
 router.post(
   "/initiate",
   authenticate,
-  asyncHandler(initiateTransfer)
+  validate(transferTokenSchema),
+  asyncHandler(initiateTransfer),
 );
 
 // Complete a transfer - submits signed transaction
-router.post(
-  "/complete",
-  authenticate,
-  asyncHandler(completeTransfer)
-);
+router.post("/complete", authenticate, asyncHandler(completeTransfer));
 
 export default router;
