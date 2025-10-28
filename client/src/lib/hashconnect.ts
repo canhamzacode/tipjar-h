@@ -2,24 +2,24 @@ import { HashConnect } from 'hashconnect';
 import { LedgerId } from '@hashgraph/sdk';
 
 const metadata = {
-  name: 'HederaAir',
-  description: 'HederaAir - Hedera Hashgraph DApp',
+  name: 'TipJar',
+  description: 'TipJar - Hedera Hashgraph DApp for Tips',
   icons: [
-    typeof window !== 'undefined'
-      ? window.location.origin + '/favicon.ico'
-      : '/favicon.ico',
+    '/favicon.ico',
   ],
   url: 'http://localhost:3000',
 };
 
 export const hc = new HashConnect(
   LedgerId.TESTNET,
-  process.env.NEXT_PUBLIC_HASHCONNECT_PROJECT_ID || '',
+  'cf1de7a47401528d21120348bed273e1',
   metadata,
   true
 );
 
 export const hcInitPromise = hc.init();
+
+let isConnecting = false;
 
 export const getHashConnectInstance = (): HashConnect => {
   if (!hc) {
@@ -31,39 +31,69 @@ export const getHashConnectInstance = (): HashConnect => {
 };
 
 export async function connectWallet(): Promise<string[]> {
-  await hcInitPromise;
-  getHashConnectInstance();
+  try {
+    if (isConnecting) {
+      throw new Error('Connection already in progress. Please wait for the current attempt to complete.');
+    }
 
-  const accountIds = hc.connectedAccountIds;
-  if (accountIds && accountIds.length > 0) {
-    return accountIds.map((id) => id.toString());
-  }
+    isConnecting = true;
+    await hcInitPromise;
+    getHashConnectInstance();
 
-  // New pairing
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(
-      () => reject(new Error('Connection timeout')),
-      120000
-    );
+    const accountIds = hc.connectedAccountIds;
+    if (accountIds && accountIds.length > 0) {
+      isConnecting = false;
+      return accountIds.map((id) => id.toString());
+    }
+ 
+    return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        isConnecting = false;
+        reject(new Error('Connection timeout - no wallet responded within 2 minutes'));
+      }, 120000);
 
-    hc.pairingEvent.once((data: any) => {
-      clearTimeout(timeout);
-      const ids = data.accountIds || [];
-      resolve(ids.map((id: any) => id.toString()));
+      hc.pairingEvent.once((data: any) => {
+        clearTimeout(timeout);
+        isConnecting = false;
+        
+        if (data && data.accountIds && data.accountIds.length > 0) {
+          const ids = data.accountIds || [];
+          resolve(ids.map((id: any) => id.toString()));
+        } else {
+          reject(new Error('No applicable accounts found. Please ensure your wallet has testnet accounts and try again.'));
+        }
+      });
+
+      try {
+        hc.openPairingModal();
+      } catch (modalError) {
+        clearTimeout(timeout);
+        isConnecting = false;
+        reject(new Error(`Failed to open pairing modal: ${modalError}`));
+      }
     });
-
-    hc.openPairingModal;
-  });
+  } catch (error) {
+    isConnecting = false;
+    throw new Error(`HashConnect initialization failed: ${error}`);
+  }
 }
 
 export async function disconnectWallet() {
-  const accountIds = hc.connectedAccountIds;
-  if (accountIds && accountIds.length > 0) {
-    await hc.disconnect();
+  try {
+    const accountIds = hc.connectedAccountIds;
+    if (accountIds && accountIds.length > 0) {
+      await hc.disconnect();
+    }
+  } catch (error) {
+    throw new Error(`Failed to disconnect wallet: ${error}`);
   }
 }
 
 export function getAccountIds(): string[] {
   const accountIds = hc.connectedAccountIds || [];
   return accountIds.map((id) => id.toString());
+}
+
+export function resetConnectionState(): void {
+  isConnecting = false;
 }

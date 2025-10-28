@@ -17,16 +17,22 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
   connect: async () => {
     if (typeof window === 'undefined') return;
 
+    const currentState = (set as any).getState?.() || {};
+    if (currentState.isConnecting) {
+      return;
+    }
+
     const { connectWallet } = await import('../lib/hashconnect');
 
     set({ isConnecting: true });
     try {
       const accounts = await connectWallet();
-      if (accounts[0]) {
+      if (accounts && accounts.length > 0 && accounts[0]) {
         set({ accountId: accounts[0], isConnected: true });
       }
     } catch (error) {
-      console.error('Wallet connection failed:', error);
+      set({ isConnecting: false });
+      throw error;
     } finally {
       set({ isConnecting: false });
     }
@@ -34,11 +40,11 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
 
   disconnect: async () => {
     try {
-      const { disconnectWallet } = await import('@/lib/hashconnect');
+      const { disconnectWallet } = await import('../lib/hashconnect');
       await disconnectWallet();
       set({ accountId: null, isConnected: false });
     } catch (error) {
-      console.error('Wallet disconnect failed:', error);
+      // Silent fail for disconnect
     }
   },
 });
