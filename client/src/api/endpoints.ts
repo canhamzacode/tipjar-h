@@ -54,4 +54,14 @@ export const endpoints = {
     key: 'walletConnect',
     url: '/wallet/connect',
   },
+
+  // Non-custodial transfer endpoints
+  initiateTransfer: {
+    key: 'initiateTransfer',
+    url: '/transfer/initiate',
+  },
+  completeTransfer: {
+    key: 'completeTransfer',
+    url: '/transfer/complete',
+  },
 };

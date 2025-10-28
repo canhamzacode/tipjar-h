@@ -3,7 +3,7 @@
 import React from 'react';
 import { UserProfileCard, QuickSendTipForm } from '@/components';
 import { AlertCircle } from 'lucide-react';
-import type { UserProfile, TipFormData } from './types';
+import type { TipFormData } from './types';
 import { useAuthState } from '@/store';
 
 const DashboardPage = () => {
@@ -53,7 +53,6 @@ const DashboardPage = () => {
           <div>
             <QuickSendTipForm onSuccess={handleTipSuccess} />
           </div>
-
           <div>{/* <RecentActivityList /> */}</div>
         </div>
       </div>

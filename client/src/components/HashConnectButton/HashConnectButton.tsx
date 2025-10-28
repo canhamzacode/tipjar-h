@@ -5,18 +5,27 @@ import { Button } from '@/components/ui/button';
 
 const HashConnectButton = () => {
   const { disconnect } = useWalletState();
-  const { connect, isConnecting, accountId, isConnected } = useWalletConnect();
+  const { connect, isConnecting, accountId, isConnected, error } = useWalletConnect();
 
   const formatAccountId = (id: string) => {
     if (id.length <= 12) return id;
     return `${id.slice(0, 6)}...${id.slice(-4)}`;
   };
 
+  const handleConnect = async () => {
+    try {
+      await connect();
+    } catch (error) {
+      // Error handling is done in the hook, but we can add UI feedback here if needed
+      console.error('Connection failed in button:', error);
+    }
+  };
+
   if (isConnecting) {
     return (
       <Button variant="outline" disabled className="hidden sm:flex gap-2">
         <Loader2 className="w-4 h-4 animate-spin" />
-        Connecting...
+        {error && error.message?.includes('Paired') ? 'Finalizing...' : 'Connecting...'}
       </Button>
     );
   }
@@ -39,7 +48,7 @@ const HashConnectButton = () => {
 
   return (
     <Button
-      onClick={connect}
+      onClick={handleConnect}
       variant="outline"
       className="hidden sm:flex gap-2"
     >

@@ -24,6 +24,51 @@ export interface SendTipResponse {
   message: string;
 }
 
+// New non-custodial transfer types
+export interface InitiateTransferRequest {
+  receiverHandle: string;
+  amount: number;
+  token?: string;
+}
+
+export interface PendingTipResponse {
+  success: boolean;
+  type: 'pending';
+  data: {
+    pendingTipId: string;
+    message: string;
+  };
+}
+
+export interface DirectTransferResponse {
+  success: boolean;
+  type: 'direct';
+  data: {
+    transactionId: string;
+    transactionBytes: string;
+    senderAccountId: string;
+    receiverAccountId: string;
+    amount: number;
+    token: string;
+  };
+}
+
+export type InitiateTransferResponse = PendingTipResponse | DirectTransferResponse;
+
+export interface CompleteTransferRequest {
+  transactionId: string;
+  signedTransactionBytes: string;
+}
+
+export interface CompleteTransferResponse {
+  success: boolean;
+  data: {
+    transactionId: string;
+    txHash: string;
+    status: string;
+  };
+}
+
 export const TransferQueries = {
   // Send a tip mutation
   useSendTip: () =>
@@ -103,6 +148,25 @@ export const TransferQueries = {
       mutationKey: [endpoints.retryTip.key],
       mutationFn: async (tipId: string) => {
         const res = await apiClient.post(`${endpoints.retryTip.url}/${tipId}`);
+        return res.data;
+      },
+    }),
+
+  // Non-custodial transfer mutations
+  useInitiateTransfer: () =>
+    useMutation<InitiateTransferResponse, Error, InitiateTransferRequest>({
+      mutationKey: [endpoints.initiateTransfer.key],
+      mutationFn: async (data: InitiateTransferRequest) => {
+        const res = await apiClient.post(endpoints.initiateTransfer.url, data);
+        return res.data;
+      },
+    }),
+
+  useCompleteTransfer: () =>
+    useMutation<CompleteTransferResponse, Error, CompleteTransferRequest>({
+      mutationKey: [endpoints.completeTransfer.key],
+      mutationFn: async (data: CompleteTransferRequest) => {
+        const res = await apiClient.post(endpoints.completeTransfer.url, data);
         return res.data;
       },
     }),

@@ -53,7 +53,13 @@ export const useWalletConnect = () => {
 
       await connectWallet();
     } catch (error) {
-      console.error('Wallet connection failed:', error);
+      // Handle HashConnect "Paired" false positive
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      if (errorMessage.includes('Paired')) {
+        // Don't throw the error, let the connection state update naturally
+        return;
+      }
+      
       throw error;
     }
   }, [connectWallet, isConnecting]);

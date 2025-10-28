@@ -15,7 +15,8 @@ import {
 import { AmountSelector } from './AmountSelector';
 import { type SendTipFormData } from '@/lib/validations/tip';
 import { useQuickSendForm } from '@/app/dashboard/hooks/useQuickSendForm';
-import { Loader2 } from 'lucide-react';
+import { useWalletState } from '@/store';
+import { Loader2, Wallet } from 'lucide-react';
 
 interface QuickSendTipFormProps {
   onSuccess?: (data: SendTipFormData) => void;
@@ -26,7 +27,8 @@ export const QuickSendTipForm: React.FC<QuickSendTipFormProps> = ({
   onSuccess,
   onError,
 }) => {
-  const { form, handleSubmit, isLoading, error, isSuccess } = useQuickSendForm({
+  const { isConnected } = useWalletState();
+  const { form, handleSubmit, isLoading, error, isSuccess, successMessage } = useQuickSendForm({
     onSuccess,
     onError,
   });
@@ -115,16 +117,33 @@ export const QuickSendTipForm: React.FC<QuickSendTipFormProps> = ({
             )}
           />
 
+          {/* Wallet Connection Warning */}
+          {!isConnected && (
+            <div className="p-3 bg-amber-50 border border-amber-200 rounded-md">
+              <div className="flex items-center">
+                <Wallet className="h-4 w-4 text-amber-600 mr-2" />
+                <p className="text-sm text-amber-700">
+                  Please connect your wallet to send tips
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Submit Button */}
           <Button
             type="submit"
             className="w-full h-12 bg-primary hover:bg-primary/80 text-white font-medium"
-            disabled={isLoading}
+            disabled={isLoading || !isConnected}
           >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Sending Tip...
+              </>
+            ) : !isConnected ? (
+              <>
+                <Wallet className="mr-2 h-4 w-4" />
+                Connect Wallet to Send
               </>
             ) : (
               'Send Tip'
@@ -144,7 +163,7 @@ export const QuickSendTipForm: React.FC<QuickSendTipFormProps> = ({
           {isSuccess && (
             <div className="p-3 bg-green-50 border border-green-200 rounded-md">
               <p className="text-sm text-green-600">
-                Tip sent successfully! 🎉
+                {successMessage || 'Tip sent successfully! 🎉'}
               </p>
             </div>
           )}

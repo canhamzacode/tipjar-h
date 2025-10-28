@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { createAuthSlice } from './userAuthSlice';
 import { createWalletSlice, WalletState } from './useWalletSlice';
@@ -7,10 +8,29 @@ import type { AuthState } from './userAuthSlice';
 
 type AppState = AuthState & WalletState;
 
-const useAppState = create<AppState>((...a) => ({
-  ...createAuthSlice(...a),
-  ...createWalletSlice(...a),
-}));
+const useAppState = create<AppState>()(
+  persist(
+    (...a) => ({
+      ...createAuthSlice(...a),
+      ...createWalletSlice(...a),
+    }),
+    {
+      name: 'tipjar-app-storage',
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        // Only persist wallet state for security
+        accountId: state.accountId,
+        isConnected: state.isConnected,
+        // Don't persist auth state or loading states
+      }),
+      onRehydrateStorage: () => (state) => {
+        if (state?.accountId && state.rehydrateConnection) {
+          setTimeout(() => state.rehydrateConnection(), 100);
+        }
+      },
+    }
+  )
+);
 
 const shallowEqual = <T extends object>(a: T, b: T): boolean => {
   const keysA = Object.keys(a) as (keyof T)[];

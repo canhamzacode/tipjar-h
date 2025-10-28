@@ -1,5 +1,5 @@
 import { HashConnect } from 'hashconnect';
-import { LedgerId } from '@hashgraph/sdk';
+import { LedgerId, Transaction, AccountId } from '@hashgraph/sdk';
 
 const metadata = {
   name: 'TipJar',
@@ -37,6 +37,7 @@ export async function connectWallet(): Promise<string[]> {
     }
 
     isConnecting = true;
+    
     await hcInitPromise;
     getHashConnectInstance();
 
@@ -47,12 +48,19 @@ export async function connectWallet(): Promise<string[]> {
     }
  
     return new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => {
+      const timeout = setTimeout(async () => {
         isConnecting = false;
-        reject(new Error('Connection timeout - no wallet responded within 2 minutes'));
-      }, 120000);
+        try {
+          if (hc.connectedAccountIds && hc.connectedAccountIds.length > 0) {
+            await hc.disconnect();
+          }
+        } catch (e) {
+          // Silent cleanup
+        }
+        reject(new Error('Connection timeout - no wallet responded within 60 seconds. Please try again.'));
+      }, 60000);
 
-      hc.pairingEvent.once((data: { accountIds?: string[] }) => {
+      const pairingHandler = (data: { accountIds?: string[] }) => {
         clearTimeout(timeout);
         isConnecting = false;
         
@@ -62,13 +70,30 @@ export async function connectWallet(): Promise<string[]> {
         } else {
           reject(new Error('No applicable accounts found. Please ensure your wallet has testnet accounts and try again.'));
         }
-      });
+      };
+
+      const errorHandler = (error: any) => {
+        if (error === 'Paired' || (error && error.message === 'Paired')) {
+          return;
+        }
+        
+        clearTimeout(timeout);
+        isConnecting = false;
+        reject(new Error(`Wallet connection failed: ${error.message || error}`));
+      };
+
+      hc.pairingEvent.once(pairingHandler);
+      hc.connectionStatusChangeEvent.once(errorHandler);
 
       try {
         hc.openPairingModal();
       } catch (modalError) {
         clearTimeout(timeout);
         isConnecting = false;
+        
+        hc.pairingEvent.off(pairingHandler);
+        hc.connectionStatusChangeEvent.off(errorHandler);
+        
         reject(new Error(`Failed to open pairing modal: ${modalError}`));
       }
     });
@@ -96,4 +121,108 @@ export function getAccountIds(): string[] {
 
 export function resetConnectionState(): void {
   isConnecting = false;
+}
+
+export function debugConnectionState(): void {
+  console.log('HashConnect Debug Info:', {
+    isConnecting,
+    connectedAccountIds: hc.connectedAccountIds,
+    initialized: !!hc,
+    hasAccounts: !!(hc.connectedAccountIds && hc.connectedAccountIds.length > 0)
+  });
+  
+  if (typeof window !== 'undefined') {
+    const persistedState = localStorage.getItem('tipjar-app-storage');
+    console.log('Persisted wallet state:', persistedState ? JSON.parse(persistedState) : 'None');
+  }
+}
+
+
+export async function forceResetConnection(): Promise<void> {
+  isConnecting = false;
+  
+  try {
+    if (hc.connectedAccountIds && hc.connectedAccountIds.length > 0) {
+      await hc.disconnect();
+    }
+  } catch (e) {
+    // Silent cleanup
+  }
+  
+  if (typeof window !== 'undefined') {
+    const storage = localStorage.getItem('tipjar-app-storage');
+    if (storage) {
+      try {
+        const parsed = JSON.parse(storage);
+        parsed.state = {
+          ...parsed.state,
+          accountId: null,
+          isConnected: false
+        };
+        localStorage.setItem('tipjar-app-storage', JSON.stringify(parsed));
+      } catch (e) {
+        localStorage.removeItem('tipjar-app-storage');
+      }
+    }
+  }
+}
+
+export async function signTransaction(transactionBytes: string): Promise<string> {
+  try {
+    await hcInitPromise;
+    
+    const accountIds = getAccountIds();
+    if (!accountIds || accountIds.length === 0) {
+      throw new Error('No connected accounts');
+    }
+
+    const accountIdForSigning = accountIds[0];
+    
+    let result: any;
+    
+    try {
+      result = await (hc as any).signTransaction(accountIdForSigning, transactionBytes);
+    } catch (firstError) {
+      try {
+        const transactionBuffer = Buffer.from(transactionBytes, 'base64');
+        const transaction = Transaction.fromBytes(transactionBuffer);
+          
+        const accountIdObj = AccountId.fromString(accountIdForSigning);
+        result = await (hc as any).signTransaction(accountIdObj as any, transaction as any);
+      } catch (secondError) {
+        try {
+          const transactionBuffer = Buffer.from(transactionBytes, 'base64');
+          const transaction = Transaction.fromBytes(transactionBuffer);
+          result = await (hc as any).signTransaction(accountIdForSigning, transaction as any);
+        } catch (thirdError) {
+          const errorMsg = firstError instanceof Error ? firstError.message : String(firstError);
+          throw new Error(`HashConnect signing failed: ${errorMsg}`);
+        }
+      }
+    }
+    
+    let signedTransactionBytes: string;
+    
+    if (typeof result === 'string') {
+      signedTransactionBytes = result;
+    } else if (result && typeof result.toBytes === 'function') {
+      signedTransactionBytes = Buffer.from(result.toBytes()).toString('base64');
+    } else if (result && result.signedTransaction) {
+      const signedTx = result.signedTransaction;
+      if (typeof signedTx === 'string') {
+        signedTransactionBytes = signedTx;
+      } else if (signedTx && typeof signedTx.toBytes === 'function') {
+        signedTransactionBytes = Buffer.from(signedTx.toBytes()).toString('base64');
+      } else {
+        signedTransactionBytes = Buffer.from(signedTx).toString('base64');
+      }
+    } else {
+      signedTransactionBytes = Buffer.from(result).toString('base64');
+    }
+    
+    return signedTransactionBytes;
+    
+  } catch (error) {
+    throw new Error(`Failed to sign transaction: ${error}`);
+  }
 }

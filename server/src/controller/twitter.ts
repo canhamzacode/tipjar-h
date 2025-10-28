@@ -138,11 +138,7 @@ export const handleTwitterCallback = async (
   return res.redirect(redirectUrl);
 };
 
-export const getMe = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const getMe = async (req: Request, res: Response) => {
   if (!req.user) {
     return res.status(HTTP_STATUS.UNAUTHORIZED).json({
       message: "Authentication required",
