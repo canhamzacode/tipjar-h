@@ -15,9 +15,9 @@ export const useWalletInit = () => {
       const validateConnection = async () => {
         try {
           // Small delay to ensure HashConnect is loaded
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          await new Promise((resolve) => setTimeout(resolve, 1000));
           await rehydrateConnection();
-        } catch (error) {
+        } catch {
           // Silent error handling
         }
       };

@@ -8,6 +8,7 @@ export interface TransferRequest {
   receiverHandle: string;
   amount: number;
   token?: string;
+  note?: string;
 }
 
 export interface ReceiverValidationResult {
@@ -82,6 +83,8 @@ export async function createPendingTip(
       receiver_twitter: transferRequest.receiverHandle,
       amount: transferRequest.amount.toString(),
       token: transferRequest.token || "HBAR",
+      // store optional note (nullable)
+      note: transferRequest.note ?? null,
       status: "pending",
     })
     .returning();
@@ -110,6 +113,8 @@ export async function createDirectTransaction(
       receiver_id: receiverId,
       token: transferRequest.token || "HBAR",
       amount: transferRequest.amount.toString(),
+      // store optional note (nullable)
+      note: transferRequest.note ?? null,
       status: "pending",
     })
     .returning();
@@ -131,7 +136,7 @@ export async function processTransferRequest(
   );
 
   if (receiverValidation.type === "pending") {
-    // todo amount actually has to be stroed somewhere that way it will be  easy to disburss to the user when they sign up.
+    // TODO: Amount should be stored somewhere to make it easy to disburse to the user when they sign up.
     const pendingTipId = await createPendingTip(transferRequest);
 
     return {

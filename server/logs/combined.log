@@ -1,244 +1,109 @@
-2025-10-28 11:55:13 info: Received SIGINT, shutting down gracefully
-2025-10-28 11:55:21 info: Server started {"port":8000}
-2025-10-28 11:56:07 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 11:56:08 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 11:56:08 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 11:56:09 info: Direct transaction created {"transactionId":"40c9ab53-0400-446d-aa3d-10f177f5e14f"}
-2025-10-28 11:56:09 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 40c9ab53-0400-446d-aa3d-10f177f5e14f"}
-2025-10-28 11:56:43 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 11:56:44 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 11:56:44 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 11:56:44 info: Direct transaction created {"transactionId":"beb89d62-8281-46ad-88eb-1a2c915dbfe2"}
-2025-10-28 11:56:44 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: beb89d62-8281-46ad-88eb-1a2c915dbfe2"}
-2025-10-28 11:57:25 info: Received SIGTERM, shutting down gracefully
-2025-10-28 11:57:30 info: Server started {"port":8000}
-2025-10-28 11:57:39 info: Received SIGTERM, shutting down gracefully
-2025-10-28 11:57:44 info: Server started {"port":8000}
-2025-10-28 12:00:26 warn: Missing or invalid Authorization header {"path":"/initiate"}
-2025-10-28 12:00:33 info: Access token refreshed {"userId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:00:34 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:00:35 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:00:35 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:00:36 info: Direct transaction created {"transactionId":"f7f8c18a-8f7f-488c-9357-fe05c6506987"}
-2025-10-28 12:00:36 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: f7f8c18a-8f7f-488c-9357-fe05c6506987"}
-2025-10-28 12:00:36 warn: Hedera operator credentials not found. Transactions may fail without operator account.
-2025-10-28 12:00:36 warn: Please set HEDERA_OPERATOR_ID and HEDERA_OPERATOR_KEY environment variables.
-2025-10-28 12:00:58 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:00:59 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:00:59 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:00:59 info: Direct transaction created {"transactionId":"95ca1d24-cd6a-43f7-8d3f-a4229a12c65e"}
-2025-10-28 12:00:59 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 95ca1d24-cd6a-43f7-8d3f-a4229a12c65e"}
-2025-10-28 12:00:59 warn: Hedera operator credentials not found. Transactions may fail without operator account.
-2025-10-28 12:00:59 warn: Please set HEDERA_OPERATOR_ID and HEDERA_OPERATOR_KEY environment variables.
-2025-10-28 12:01:22 info: Received SIGINT, shutting down gracefully
-2025-10-28 12:01:38 info: Server started {"port":8000}
-2025-10-28 12:01:50 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:01:51 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:01:51 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:01:51 info: Direct transaction created {"transactionId":"0ac2207e-3728-44b3-8129-24fd514a3c67"}
-2025-10-28 12:01:51 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 0ac2207e-3728-44b3-8129-24fd514a3c67"}
-2025-10-28 12:01:51 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:01:51 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1}
-2025-10-28 12:01:51 info: Direct transfer initiated {"transactionId":"0ac2207e-3728-44b3-8129-24fd514a3c67","sender":"0.0.7148758","receiver":"0.0.7148758","amount":1}
-2025-10-28 12:03:18 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:03:19 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:03:19 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:03:20 info: Direct transaction created {"transactionId":"9df30a2d-2e68-4201-bb55-ed22dd5cd06a"}
-2025-10-28 12:03:20 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 9df30a2d-2e68-4201-bb55-ed22dd5cd06a"}
-2025-10-28 12:03:20 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:03:20 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1}
-2025-10-28 12:03:20 info: Direct transfer initiated {"transactionId":"9df30a2d-2e68-4201-bb55-ed22dd5cd06a","sender":"0.0.7148758","receiver":"0.0.7148758","amount":1}
-2025-10-28 12:05:04 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:05:07 info: Server started {"port":8000}
-2025-10-28 12:05:10 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:05:13 info: Server started {"port":8000}
-2025-10-28 12:11:34 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 12:11:35 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:11:35 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:11:36 info: Direct transaction created {"transactionId":"ad03ccc0-701c-4dde-967b-5a1c9c3e6692"}
-2025-10-28 12:11:36 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: ad03ccc0-701c-4dde-967b-5a1c9c3e6692"}
-2025-10-28 12:11:36 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:11:36 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":5}
-2025-10-28 12:11:36 info: Direct transfer initiated {"transactionId":"ad03ccc0-701c-4dde-967b-5a1c9c3e6692","sender":"0.0.7148758","receiver":"0.0.7148758","amount":5}
-2025-10-28 12:14:20 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:14:28 info: Server started {"port":8000}
-2025-10-28 12:14:56 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:15:00 info: Server started {"port":8000}
-2025-10-28 12:15:06 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:15:10 info: Server started {"port":8000}
-2025-10-28 12:15:13 info: Received SIGTERM, shutting down gracefully
-2025-10-28 12:15:18 info: Server started {"port":8000}
-2025-10-28 12:15:52 warn: Missing or invalid Authorization header {"path":"/initiate"}
-2025-10-28 12:15:59 info: Access token refreshed {"userId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:15:59 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 12:16:00 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:16:00 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:16:00 info: Direct transaction created {"transactionId":"97a04d80-4a85-4015-8a6e-5f8c8c7d9292"}
-2025-10-28 12:16:00 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 97a04d80-4a85-4015-8a6e-5f8c8c7d9292"}
-2025-10-28 12:16:00 info: Amount conversion {"usdAmount":5,"hbarAmount":100,"hbarPriceUsd":0.05}
-2025-10-28 12:16:00 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:16:00 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":100}
-2025-10-28 12:16:00 info: Direct transfer initiated {"transactionId":"97a04d80-4a85-4015-8a6e-5f8c8c7d9292","sender":"0.0.7148758","receiver":"0.0.7148758","amount":5}
-2025-10-28 12:16:29 info: Processing transfer request {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:16:30 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:16:30 info: Creating direct transaction {"senderId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:16:31 info: Direct transaction created {"transactionId":"302d8381-399f-4919-9d8f-7d83163ccafe"}
-2025-10-28 12:16:31 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 302d8381-399f-4919-9d8f-7d83163ccafe"}
-2025-10-28 12:16:31 info: Amount conversion {"usdAmount":1,"hbarAmount":20,"hbarPriceUsd":0.05}
-2025-10-28 12:16:31 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:16:31 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7148758","receiverAccountId":"0.0.7148758","usdAmount":1,"hbarAmount":20}
-2025-10-28 12:16:31 info: Direct transfer initiated {"transactionId":"302d8381-399f-4919-9d8f-7d83163ccafe","sender":"0.0.7148758","receiver":"0.0.7148758","amount":1}
-2025-10-28 12:18:08 info: Twitter OAuth initiated {"state":"6oSMD3kfxrX.OqVsdWgqEjStrSrbr9gF"}
-2025-10-28 12:18:19 info: Twitter OAuth initiated {"state":"AnLY7rp.GWbHDf59q.F4S8GgGkJZeDu_"}
-2025-10-28 12:18:25 info: OAuth token exchange successful
-2025-10-28 12:18:25 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 12:18:33 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
-2025-10-28 12:18:33 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
-2025-10-28 12:18:55 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 12:18:56 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 12:18:56 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 12:18:56 info: Direct transaction created {"transactionId":"a9024b75-0246-4ce1-b3c5-4ea38a1887a9"}
-2025-10-28 12:18:56 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: a9024b75-0246-4ce1-b3c5-4ea38a1887a9"}
-2025-10-28 12:18:56 info: Amount conversion {"usdAmount":1,"hbarAmount":20,"hbarPriceUsd":0.05}
-2025-10-28 12:18:56 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 12:18:56 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":1,"hbarAmount":20}
-2025-10-28 12:18:56 info: Direct transfer initiated {"transactionId":"a9024b75-0246-4ce1-b3c5-4ea38a1887a9","sender":"0.0.7134924","receiver":"0.0.7148758","amount":1}
-2025-10-28 15:00:35 info: Server started {"port":8000}
-2025-10-28 15:10:06 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:10:10 info: Server started {"port":8000}
-2025-10-28 15:10:51 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:10:55 info: Server started {"port":8000}
-2025-10-28 15:12:15 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:12:18 info: Server started {"port":8000}
-2025-10-28 15:14:07 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:14:10 info: Server started {"port":8000}
-2025-10-28 15:15:36 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:15:39 info: Server started {"port":8000}
-2025-10-28 15:20:14 info: Twitter OAuth initiated {"state":"FWAmU5E8wcxK3zMPs-R9.mRp.NgRLFsq"}
-2025-10-28 15:20:48 info: OAuth token exchange successful
-2025-10-28 15:20:48 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 15:20:59 error: Error finding user by twitter_id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:94:21)"}
-2025-10-28 15:20:59 error: Failed to upsert user {"twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt","error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:94:21)"}
-2025-10-28 15:21:13 info: Twitter OAuth initiated {"state":"5A6bzGb2u02xfhuZ2Je-8664~Fg3wGiE"}
-2025-10-28 15:21:19 info: OAuth token exchange successful
-2025-10-28 15:21:19 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 15:21:22 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
-2025-10-28 15:21:23 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
-2025-10-28 15:22:54 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:22:57 info: Server started {"port":8000}
-2025-10-28 15:24:23 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:24:25 info: Server started {"port":8000}
-2025-10-28 15:24:34 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:24:37 info: Server started {"port":8000}
-2025-10-28 15:24:38 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:24:41 info: Server started {"port":8000}
-2025-10-28 15:24:48 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:24:49 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:24:49 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:24:49 info: Direct transaction created {"transactionId":"84422aea-a896-4060-83c6-c393aeedf573"}
-2025-10-28 15:24:49 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 84422aea-a896-4060-83c6-c393aeedf573"}
-2025-10-28 15:24:49 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:24:49 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:24:49 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:24:49 info: Direct transfer initiated {"transactionId":"84422aea-a896-4060-83c6-c393aeedf573","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:30:26 info: Server started {"port":8000}
-2025-10-28 15:30:41 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
-2025-10-28 15:30:42 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:30:42 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:30:43 info: Direct transaction created {"transactionId":"44a0fa30-5666-4531-9552-33f953a82d6d"}
-2025-10-28 15:30:43 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar transfer: 44a0fa30-5666-4531-9552-33f953a82d6d"}
-2025-10-28 15:30:43 info: Amount conversion {"usdAmount":1,"hbarAmount":1}
-2025-10-28 15:30:43 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:30:43 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":1,"hbarAmount":1}
-2025-10-28 15:30:43 info: Direct transfer initiated {"transactionId":"44a0fa30-5666-4531-9552-33f953a82d6d","sender":"0.0.7134924","receiver":"0.0.7148758","amount":1}
-2025-10-28 15:36:21 info: Received SIGINT, shutting down gracefully
-2025-10-28 15:37:27 info: Twitter OAuth initiated {"state":"tGYKJd-YCfXFuWnvkBcsByy0r.hMlzd1"}
-2025-10-28 15:38:04 info: OAuth token exchange successful
-2025-10-28 15:38:05 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 15:38:15 error: Error finding user by twitter_id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:94:21)"}
-2025-10-28 15:38:15 error: Failed to upsert user {"twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt","error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"twitter_id\" = $1 limit $2\nparams: 1776544369387933696,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserByTwitterId (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:23:18)\n    at async upsertUserFromTwitter (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:82:16)\n    at async handleTwitterCallback (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/twitter.ts:94:21)"}
-2025-10-28 15:38:45 info: Twitter OAuth initiated {"state":"bRKSg11KDDJqhBDKx.Dyh7dP1~tOXxMw"}
-2025-10-28 15:38:57 info: OAuth token exchange successful
-2025-10-28 15:38:57 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 15:39:00 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
-2025-10-28 15:39:00 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
-2025-10-28 15:40:09 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:40:11 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:40:11 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:40:11 info: Direct transaction created {"transactionId":"713934d1-c6ac-4e0c-9d1e-1fe44ce9aabc"}
-2025-10-28 15:40:11 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 713934d1-c6ac-4e0c-9d1e-1fe44ce9aabc"}
-2025-10-28 15:40:11 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:40:11 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:40:11 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:40:11 info: Direct transfer initiated {"transactionId":"713934d1-c6ac-4e0c-9d1e-1fe44ce9aabc","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:48:19 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:48:21 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:48:21 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:48:21 info: Direct transaction created {"transactionId":"774b0451-3459-4286-b0eb-9e49c07562b7"}
-2025-10-28 15:48:21 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 774b0451-3459-4286-b0eb-9e49c07562b7"}
-2025-10-28 15:48:21 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:48:21 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:48:21 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:48:21 info: Direct transfer initiated {"transactionId":"774b0451-3459-4286-b0eb-9e49c07562b7","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:52:00 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:52:01 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:52:01 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:52:01 info: Direct transaction created {"transactionId":"090b49b3-d47c-4b05-ac61-67adaa625bc9"}
-2025-10-28 15:52:01 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 090b49b3-d47c-4b05-ac61-67adaa625bc9"}
-2025-10-28 15:52:01 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:52:01 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:52:01 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:52:01 info: Direct transfer initiated {"transactionId":"090b49b3-d47c-4b05-ac61-67adaa625bc9","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:53:32 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:53:34 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:53:34 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:53:34 info: Direct transaction created {"transactionId":"5f056f21-321a-4f62-95b3-9c3b266be860"}
-2025-10-28 15:53:34 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 5f056f21-321a-4f62-95b3-9c3b266be860"}
-2025-10-28 15:53:34 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:53:34 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:53:34 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:53:34 info: Direct transfer initiated {"transactionId":"5f056f21-321a-4f62-95b3-9c3b266be860","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:55:12 warn: Missing or invalid Authorization header {"path":"/me"}
-2025-10-28 15:55:14 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
-2025-10-28 15:56:04 info: Received SIGTERM, shutting down gracefully
-2025-10-28 15:56:11 info: Server started {"port":8000}
-2025-10-28 15:58:47 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 15:58:47 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 15:58:47 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 15:58:48 info: Direct transaction created {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659"}
-2025-10-28 15:58:48 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: 5a4084dd-9a76-4757-a4e7-abc5d6c61659"}
-2025-10-28 15:58:48 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 15:58:48 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:58:48 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 15:58:48 info: Direct transfer initiated {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 15:59:06 info: Submitting signed transaction to Hedera {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","signedTransactionBytes":"CoECKv4BCpIBChoKCwi00IPIBhD1q4U5EgkIABAAGMy9swMYAB..."}
-2025-10-28 15:59:06 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 15:59:06 info: Executing transaction on Hedera network {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659"}
-2025-10-28 15:59:07 info: Getting transaction receipt {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","hederaTxId":"0.0.7134924@1761667124.119625205"}
-2025-10-28 15:59:09 info: Transaction submitted successfully {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","hederaTxId":"0.0.7134924@1761667124.119625205","status":"SUCCESS"}
-2025-10-28 15:59:09 info: Updating transaction status {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","status":"confirmed","txHash":"0.0.7134924@1761667124.119625205"}
-2025-10-28 15:59:09 info: Transaction status updated {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","status":"confirmed"}
-2025-10-28 15:59:09 info: Transfer completed successfully {"transactionId":"5a4084dd-9a76-4757-a4e7-abc5d6c61659","txHash":"0.0.7134924@1761667124.119625205"}
-2025-10-28 21:53:24 info: Server started {"port":8000}
-2025-10-28 21:58:22 info: Twitter OAuth initiated {"state":"I2BSH3K~T6WvbC-uTE_XgjEEaxBjQDxK"}
-2025-10-28 21:58:31 info: OAuth token exchange successful
-2025-10-28 21:58:31 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
-2025-10-28 21:58:43 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
-2025-10-28 21:58:43 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
-2025-10-28 21:59:15 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR"}
-2025-10-28 21:59:16 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
-2025-10-28 21:59:16 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":5,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
-2025-10-28 21:59:16 info: Direct transaction created {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191"}
-2025-10-28 21:59:16 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":5,"token":"HBAR","memo":"TipJar transfer: eac63f39-64a0-4ca9-a010-d3650e005191"}
-2025-10-28 21:59:16 info: Amount conversion {"usdAmount":5,"hbarAmount":5}
-2025-10-28 21:59:16 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 21:59:16 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":5,"hbarAmount":5}
-2025-10-28 21:59:16 info: Direct transfer initiated {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","sender":"0.0.7134924","receiver":"0.0.7148758","amount":5}
-2025-10-28 21:59:31 info: Submitting signed transaction to Hedera {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","signedTransactionBytes":"CoICKv8BCpMBChsKDAix+YTIBhC3y6jwARIJCAAQABjMvbMDGA..."}
-2025-10-28 21:59:31 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
-2025-10-28 21:59:31 info: Executing transaction on Hedera network {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191"}
-2025-10-28 21:59:31 info: Getting transaction receipt {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","hederaTxId":"0.0.7134924@1761688753.503981495"}
-2025-10-28 21:59:33 info: Transaction submitted successfully {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","hederaTxId":"0.0.7134924@1761688753.503981495","status":"SUCCESS"}
-2025-10-28 21:59:33 info: Updating transaction status {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","status":"confirmed","txHash":"0.0.7134924@1761688753.503981495"}
-2025-10-28 21:59:33 info: Transaction status updated {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","status":"confirmed"}
-2025-10-28 21:59:33 info: Transfer completed successfully {"transactionId":"eac63f39-64a0-4ca9-a010-d3650e005191","txHash":"0.0.7134924@1761688753.503981495"}
+2025-10-28 23:15:56 info: Twitter OAuth initiated {"state":"Rh1j3C0JkWbXl4aE~dHB9dAdjdvg9NeA"}
+2025-10-28 23:16:09 info: OAuth token exchange successful
+2025-10-28 23:17:29 info: Received SIGINT, shutting down gracefully
+2025-10-28 23:40:49 info: Server started {"port":8000}
+2025-10-28 23:41:39 info: Received SIGTERM, shutting down gracefully
+2025-10-28 23:41:49 info: Server started {"port":8000}
+2025-10-28 23:41:50 info: Received SIGTERM, shutting down gracefully
+2025-10-28 23:41:56 info: Server started {"port":8000}
+2025-10-28 23:42:07 info: Received SIGINT, shutting down gracefully
+2025-10-29 21:37:07 info: Server started {"port":8000}
+2025-10-29 21:38:26 info: Twitter OAuth initiated {"state":"rDH7Fh~iVoK0C0oQpMpJPFo5gDV0b5X7"}
+2025-10-29 21:38:38 info: OAuth token exchange successful
+2025-10-29 21:38:39 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-29 21:38:47 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-29 21:38:48 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-29 21:42:44 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
+2025-10-29 21:42:46 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
+2025-10-29 21:42:46 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 21:42:47 info: Direct transaction created {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796"}
+2025-10-29 21:42:47 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar: @Tazmah Tayo → @canhamzacode"}
+2025-10-29 21:42:47 info: Amount conversion {"usdAmount":1,"hbarAmount":1}
+2025-10-29 21:42:47 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 21:42:47 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":1,"hbarAmount":1}
+2025-10-29 21:42:47 info: Direct transfer initiated - awaiting signature {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","sender":"0.0.7134924","receiver":"0.0.7148758","amount":1}
+2025-10-29 21:43:09 info: Submitting signed transaction to Hedera {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","signedTransactionBytes":"CvEBKu4BCoIBChsKDAjTlIrIBhDfm+uxAxIJCAAQABjMvbMDGA..."}
+2025-10-29 21:43:09 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 21:43:09 info: Executing transaction on Hedera network {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796"}
+2025-10-29 21:43:10 info: Getting transaction receipt {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","hederaTxId":"0.0.7134924@1761774163.909823455"}
+2025-10-29 21:43:11 info: Transaction submitted successfully {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","hederaTxId":"0.0.7134924@1761774163.909823455","status":"SUCCESS"}
+2025-10-29 21:43:11 info: Updating transaction status {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","status":"confirmed","txHash":"0.0.7134924@1761774163.909823455"}
+2025-10-29 21:43:12 info: Transaction status updated {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","status":"confirmed"}
+2025-10-29 21:43:12 info: Transfer completed successfully {"transactionId":"45ad1c6f-d18d-4871-aacf-e5b6e7191796","txHash":"0.0.7134924@1761774163.909823455","sender":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiver":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 21:45:21 info: Received SIGINT, shutting down gracefully
+2025-10-29 21:57:22 info: Server started {"port":8000}
+2025-10-29 21:57:34 info: Received SIGTERM, shutting down gracefully
+2025-10-29 21:57:38 info: Server started {"port":8000}
+2025-10-29 22:02:10 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:02:20 info: Server started {"port":8000}
+2025-10-29 22:02:22 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:02:28 info: Server started {"port":8000}
+2025-10-29 22:02:33 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-29 22:02:34 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-29 22:02:56 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:06:24 info: Server started {"port":8000}
+2025-10-29 22:17:37 warn: Missing or invalid Authorization header {"path":"/"}
+2025-10-29 22:17:42 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-29 22:17:47 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-29 22:31:25 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:31:36 info: Server started {"port":8000}
+2025-10-29 22:31:47 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:31:53 info: Server started {"port":8000}
+2025-10-29 22:32:02 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:32:07 info: Server started {"port":8000}
+2025-10-29 22:34:10 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:34:38 info: Server started {"port":8000}
+2025-10-29 22:35:05 info: Received SIGINT, shutting down gracefully
+2025-10-29 22:36:53 info: Server started {"port":8000}
+2025-10-29 22:37:24 info: Twitter OAuth initiated {"state":"oWN7mFLLvOYwKgYuu5YviIjmbn3KK.~9"}
+2025-10-29 22:38:01 info: Twitter OAuth initiated {"state":"G-7.3arX7p1jAHSwlvj2guyegk2ErdDu"}
+2025-10-29 22:38:09 info: OAuth token exchange successful
+2025-10-29 22:38:09 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-29 22:38:17 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-29 22:38:18 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-29 22:39:10 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR"}
+2025-10-29 22:39:12 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
+2025-10-29 22:39:12 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1,"token":"HBAR","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 22:39:12 info: Direct transaction created {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8"}
+2025-10-29 22:39:12 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1,"token":"HBAR","memo":"TipJar: @Tazmah Tayo → @canhamzacode"}
+2025-10-29 22:39:12 info: Amount conversion {"usdAmount":1,"hbarAmount":1}
+2025-10-29 22:39:12 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 22:39:12 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":1,"hbarAmount":1}
+2025-10-29 22:39:12 info: Direct transfer initiated - awaiting signature {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","sender":"0.0.7134924","receiver":"0.0.7148758","amount":1}
+2025-10-29 22:39:47 info: Submitting signed transaction to Hedera {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","signedTransactionBytes":"CvABKu0BCoEBChoKCwiNr4rIBhCvpskkEgkIABAAGMy9swMYAB..."}
+2025-10-29 22:39:47 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 22:39:47 info: Executing transaction on Hedera network {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8"}
+2025-10-29 22:39:48 info: Getting transaction receipt {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","hederaTxId":"0.0.7134924@1761777549.076698415"}
+2025-10-29 22:39:50 info: Transaction submitted successfully {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","hederaTxId":"0.0.7134924@1761777549.076698415","status":"SUCCESS"}
+2025-10-29 22:39:50 info: Updating transaction status {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","status":"confirmed","txHash":"0.0.7134924@1761777549.076698415"}
+2025-10-29 22:39:51 info: Transaction status updated {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","status":"confirmed"}
+2025-10-29 22:39:51 info: Transfer completed successfully {"transactionId":"032adf45-cbc1-438e-a180-7254a9c59ab8","txHash":"0.0.7134924@1761777549.076698415","sender":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiver":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 22:43:22 info: Processing transfer request {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1.1,"token":"HBAR","note":"This is my note of appreciation"}
+2025-10-29 22:43:23 info: Receiver has wallet, direct transfer possible {"receiverHandle":"canhamzacode","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940","walletAddress":"0.0.7148758"}
+2025-10-29 22:43:23 info: Creating direct transaction {"senderId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiverHandle":"canhamzacode","amount":1.1,"token":"HBAR","note":"This is my note of appreciation","receiverId":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 22:43:24 info: Direct transaction created {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1"}
+2025-10-29 22:43:24 info: Creating unsigned Hedera transaction {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","amount":1.1,"token":"HBAR","memo":"TipJar: @Tazmah Tayo → @canhamzacode — This is my note of appreciation"}
+2025-10-29 22:43:24 info: Amount conversion {"usdAmount":1.1,"hbarAmount":1.1}
+2025-10-29 22:43:24 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 22:43:24 info: Unsigned transaction created successfully {"senderAccountId":"0.0.7134924","receiverAccountId":"0.0.7148758","usdAmount":1.1,"hbarAmount":1.1}
+2025-10-29 22:43:24 info: Direct transfer initiated - awaiting signature {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","sender":"0.0.7134924","receiver":"0.0.7148758","amount":1.1}
+2025-10-29 22:43:38 info: Submitting signed transaction to Hedera {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","signedTransactionBytes":"CpUCKpICCqYBChsKDAiEsYrIBhDA04/RAxIJCAAQABjMvbMDGA..."}
+2025-10-29 22:43:38 info: Setting Hedera operator account {"operatorId":"0.0.7134924"}
+2025-10-29 22:43:38 info: Executing transaction on Hedera network {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1"}
+2025-10-29 22:43:39 info: Getting transaction receipt {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","hederaTxId":"0.0.7134924@1761777796.975432128"}
+2025-10-29 22:43:41 info: Transaction submitted successfully {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","hederaTxId":"0.0.7134924@1761777796.975432128","status":"SUCCESS"}
+2025-10-29 22:43:41 info: Updating transaction status {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","status":"confirmed","txHash":"0.0.7134924@1761777796.975432128"}
+2025-10-29 22:43:41 info: Transaction status updated {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","status":"confirmed"}
+2025-10-29 22:43:41 info: Transfer completed successfully {"transactionId":"45ec56de-9774-4900-a668-f555e377eba1","txHash":"0.0.7134924@1761777796.975432128","sender":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiver":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-29 22:45:09 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:45:14 info: Server started {"port":8000}
+2025-10-29 22:47:01 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:47:09 info: Server started {"port":8000}
+2025-10-29 22:47:29 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:47:34 info: Server started {"port":8000}
+2025-10-29 22:47:46 info: Received SIGTERM, shutting down gracefully
+2025-10-29 22:47:50 info: Server started {"port":8000}
+2025-10-29 22:52:52 error: Error finding user by id {"error":"Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1","stack":"Error: Failed query: select \"id\", \"twitter_handle\", \"twitter_id\", \"wallet_address\", \"wallet_type\", \"name\", \"profile_image_url\", \"description\", \"access_token\", \"refresh_token\", \"token_expires_at\", \"created_at\" from \"users\" \"users\" where \"users\".\"id\" = $1 limit $2\nparams: 0c4ef147-6d95-4f46-81ee-c3e2b3d15d42,1\n    at NeonHttpPreparedQuery.queryWithCache (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/pg-core/session.ts:73:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async NeonHttpPreparedQuery.execute (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/node_modules/src/neon-http/session.ts:83:18)\n    at async findUserById (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/services/user.service.ts:8:18)\n    at async getAllUserTransactions (/home/hamza/Desktop/Hamzat-Abdul-Muizz/Hachaton/tipjar/server/src/controller/transactions.ts:15:16)"}
+2025-10-29 22:53:32 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-29 22:53:32 warn: Missing or invalid Authorization header {"path":"/"}
+2025-10-29 22:53:37 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}

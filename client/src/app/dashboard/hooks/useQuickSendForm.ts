@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { sendTipSchema, type SendTipFormData } from '@/lib/validations/tip';
 import { TransferQueries } from '@/api/transferQueries';
-// import { signTransaction } from '@/lib/hashconnect';
 import { useWalletState } from '@/store';
 
 interface UseQuickSendFormOptions {
@@ -40,22 +39,28 @@ export const useQuickSendForm = (options: UseQuickSendFormOptions = {}) => {
       return;
     }
 
-    // Additional validation: check if we actually have account IDs
     try {
       const { checkAndRestoreConnection } = await import('@/lib/hashconnect');
       const isConnected = await checkAndRestoreConnection();
       if (!isConnected) {
-        setError(new Error('Wallet connection lost. Please reconnect your wallet.'));
+        setError(
+          new Error('Wallet connection lost. Please reconnect your wallet.')
+        );
         return;
       }
-    } catch (error) {
-      setError(new Error('Unable to verify wallet connection. Please reconnect your wallet.'));
+    } catch {
+      setError(
+        new Error(
+          'Unable to verify wallet connection. Please reconnect your wallet.'
+        )
+      );
       return;
     }
 
     if (isLoading) {
-      // Prevent double submission
-      console.log('Form submission already in progress, ignoring duplicate request');
+      console.log(
+        'Form submission already in progress, ignoring duplicate request'
+      );
       return;
     }
 
@@ -64,21 +69,19 @@ export const useQuickSendForm = (options: UseQuickSendFormOptions = {}) => {
     setIsSuccess(false);
 
     try {
-      // Step 1: Initiate transfer (check if recipient exists)
       const response = await initiateTransferMutation.mutateAsync({
         receiverHandle: data.recipientHandle,
         amount: data.amount,
         token: 'HBAR',
+        note: data.note,
       });
 
       if (response.type === 'pending') {
-        // Scenario B: Recipient doesn't have wallet - tip is pending
         setSuccessMessage(
           `Tip pending! We'll notify @${data.recipientHandle} to connect their wallet.`
         );
         setIsSuccess(true);
 
-        // Reset form
         form.reset({
           recipientHandle: '',
           amount: 5,
@@ -94,7 +97,6 @@ export const useQuickSendForm = (options: UseQuickSendFormOptions = {}) => {
 
         const { signTransaction } = await import('@/lib/hashconnect');
 
-        // Step 2: Sign transaction with user's wallet
         const signedTransactionBytes = await signTransaction(transactionBytes);
 
         console.log('Transaction signed, submitting to blockchain...', {

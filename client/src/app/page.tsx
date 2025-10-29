@@ -1,11 +1,4 @@
-import {
-  About,
-  Features,
-  Footer,
-  Hero,
-  HowItWorks,
-  Navbar,
-} from '@/components';
+import { About, Features, Footer, Hero, HowItWorks } from '@/components';
 
 export default function Home() {
   return (

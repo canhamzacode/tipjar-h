@@ -59,7 +59,7 @@ export const AmountSelector: React.FC<AmountSelectorProps> = ({
             )}
             onClick={() => handlePresetClick(amount)}
           >
-            ${amount}.00
+            {amount}.00 HBAR
           </Button>
         ))}
 
@@ -72,7 +72,7 @@ export const AmountSelector: React.FC<AmountSelectorProps> = ({
           )}
           onClick={handleCustomClick}
         >
-          $ Custom
+          Custom HBAR
         </Button>
       </div>
 

@@ -19,7 +19,9 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
   connect: async () => {
     if (typeof window === 'undefined') return;
 
-    const currentState = (set as unknown as { getState?: () => WalletState }).getState?.() || {} as WalletState;
+    const currentState =
+      (set as unknown as { getState?: () => WalletState }).getState?.() ||
+      ({} as WalletState);
     if (currentState.isConnecting) {
       return;
     }
@@ -36,24 +38,28 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
         throw new Error('No accounts found in wallet');
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
       if (errorMessage === 'Wallet connection failed: Paired') {
         setTimeout(async () => {
           try {
             const { getAccountIds } = await import('@/lib/hashconnect');
             const accounts = getAccountIds();
             if (accounts && accounts.length > 0) {
-              set({ accountId: accounts[0], isConnected: true, isConnecting: false });
+              set({
+                accountId: accounts[0],
+                isConnected: true,
+                isConnecting: false,
+              });
               return;
             }
-          } catch (e) {
-          }
+          } catch {}
           set({ isConnecting: false });
         }, 1000);
-        
+
         return;
       }
-      
+
       set({ isConnecting: false });
       throw error;
     }
@@ -64,26 +70,32 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
       const { disconnectWallet } = await import('@/lib/hashconnect');
       await disconnectWallet();
       set({ accountId: null, isConnected: false });
-    } catch {
-    }
+    } catch {}
   },
 
   rehydrateConnection: async () => {
     if (typeof window === 'undefined') return;
 
-    const currentState = (set as unknown as { getState?: () => WalletState }).getState?.() || {} as WalletState;
-    
+    const currentState =
+      (set as unknown as { getState?: () => WalletState }).getState?.() ||
+      ({} as WalletState);
+
     if (!currentState.accountId || currentState.isConnecting) {
       return;
     }
 
     try {
-      const { checkAndRestoreConnection, getAccountIds } = await import('@/lib/hashconnect');
+      const { checkAndRestoreConnection, getAccountIds } = await import(
+        '@/lib/hashconnect'
+      );
       const isConnected = await checkAndRestoreConnection();
-      
+
       if (isConnected) {
         const connectedAccountIds = getAccountIds();
-        if (connectedAccountIds && connectedAccountIds.includes(currentState.accountId)) {
+        if (
+          connectedAccountIds &&
+          connectedAccountIds.includes(currentState.accountId)
+        ) {
           set({ isConnected: true });
         } else if (connectedAccountIds && connectedAccountIds.length > 0) {
           // Account changed, update to the new one
@@ -102,7 +114,7 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
 
   forceReset: async () => {
     if (typeof window === 'undefined') return;
-    
+
     try {
       const { forceResetConnection } = await import('@/lib/hashconnect');
       await forceResetConnection();
@@ -115,7 +127,7 @@ export const createWalletSlice: StateCreator<WalletState> = (set) => ({
 
   debugConnection: async () => {
     if (typeof window === 'undefined') return;
-    
+
     try {
       const { debugConnectionState } = await import('@/lib/hashconnect');
       debugConnectionState();

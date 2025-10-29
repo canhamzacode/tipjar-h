@@ -3,6 +3,7 @@ import config from "./config/config";
 import { errorHandler } from "./middleware";
 import appROute from "./routes";
 import { logger } from "./services";
+import { ensureDbReady } from "./db";
 import session from "express-session";
 import cors from "cors";
 
@@ -44,31 +45,55 @@ app.get("/health", (req, res) => {
   });
 });
 
-const server = app.listen(config.port, () => {
-  logger.info("Server started", { port: config.port });
+// Readiness endpoint — useful for load balancers / k8s. Returns 200 when DB is reachable.
+app.get("/ready", async (req, res) => {
+  try {
+    const { isDbReady } = await import("./db");
+    const ready = await isDbReady();
+    if (ready) return res.status(200).json({ ready: true });
+    res.set("Retry-After", "5");
+    return res.status(503).json({ ready: false });
+  } catch (err) {
+    res.set("Retry-After", "5");
+    return res.status(503).json({ ready: false });
+  }
 });
 
-if (process.env.START_BOT !== "false") {
-  logger.info("Starting integrated bot...");
-  import("./bot").catch((error) => {
-    logger.error("Failed to start bot", error);
-  });
-}
+// Wait for DB to be reachable before listening to avoid first-request failures
+(async () => {
+  try {
+    await ensureDbReady();
+    const server = app.listen(config.port, () => {
+      logger.info("Server started", { port: config.port });
+    });
 
-process.on("SIGINT", () => {
-  logger.info("Received SIGINT, shutting down gracefully");
+    if (process.env.START_BOT !== "false") {
+      logger.info("Starting integrated bot...");
+      import("./bot").catch((error) => {
+        logger.error("Failed to start bot", error);
+      });
+    }
 
-  server.close(() => {
-    logger.info("Server closed");
-    process.exit(0);
-  });
-});
+    process.on("SIGINT", () => {
+      logger.info("Received SIGINT, shutting down gracefully");
 
-process.on("SIGTERM", () => {
-  logger.info("Received SIGTERM, shutting down gracefully");
+      server.close(() => {
+        logger.info("Server closed");
+        process.exit(0);
+      });
+    });
 
-  server.close(() => {
-    logger.info("Server closed");
-    process.exit(0);
-  });
-});
+    process.on("SIGTERM", () => {
+      logger.info("Received SIGTERM, shutting down gracefully");
+
+      server.close(() => {
+        logger.info("Server closed");
+        process.exit(0);
+      });
+    });
+  } catch (err) {
+    const errMsg = err instanceof Error ? err : new Error(String(err));
+    logger.error("Failed to start server due to database availability", errMsg);
+    process.exit(1);
+  }
+})();
