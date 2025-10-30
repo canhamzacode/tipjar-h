@@ -6,8 +6,10 @@ import {
   cacheUser,
   logger,
   findUserByTwitterHandle,
+  processTransferRequest,
 } from "../services";
 import { rwClient, DRY_RUN } from "../utils/twitter";
+import { Command } from "./parser";
 
 async function getOrCreateUserSimple(twitterHandle: string) {
   let user = getCachedUser(twitterHandle);
@@ -26,7 +28,14 @@ async function getOrCreateUserSimple(twitterHandle: string) {
   return user;
 }
 
-export async function handleTransactionCommand(validTweet: any, command: any) {
+export async function handleTransactionCommand(
+  validTweet: {
+    id: string;
+    text: string;
+    author_id: string;
+  },
+  command: Command,
+) {
   try {
     // Sender must be authenticated (have twitter_id set)
     const sender = await findUserByTwitterHandle(validTweet.author_id);
@@ -49,25 +58,34 @@ export async function handleTransactionCommand(validTweet: any, command: any) {
       return;
     }
 
-    // Check if recipient exists
-    let recipient = await findUserByTwitterHandle(command.recipient);
+    if (!command.recipient) {
+      const replyMessage = `❌ Please mention the recipient for the tip (e.g. @username).`;
+      if (!DRY_RUN) {
+        await rwClient.v2.reply(replyMessage, validTweet.id);
+      } else {
+        logger.info("DRY RUN - Would send missing recipient reply", {
+          message: replyMessage,
+        });
+      }
 
-    if (!recipient) {
-      // Recipient not registered - create pending tip
-      logger.info("Recipient not registered, creating pending tip", {
-        recipient: command.recipient,
-        amount: command.amount,
-        currency: command.currency,
+      logger.warn("Transaction attempted without a recipient", {
+        tweetId: validTweet.id,
+        authorId: validTweet.author_id,
       });
+      return;
+    }
 
-      await db.insert(pending_tips).values({
-        sender_id: sender.id,
-        receiver_twitter: command.recipient,
-        amount: String(command.amount),
-        token: command.currency!,
-      });
+    // Use shared transfer service to create either a pending tip or a pending transaction
+    const transferResult = await processTransferRequest({
+      senderId: sender.id,
+      receiverHandle: command.recipient,
+      amount: Number(command.amount),
+      token: command.currency,
+      note: command.note,
+    });
 
-      const pendingReply = `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} saved! They'll receive it when they link their account.`;
+    if (transferResult.type === "pending") {
+      const pendingReply = `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} saved! They'll receive it when they link their account. View your tips: ${process.env.APP_URL || "https://tipjar.app"}/dashboard`;
 
       if (!DRY_RUN) {
         await rwClient.v2.reply(pendingReply, validTweet.id);
@@ -77,26 +95,21 @@ export async function handleTransactionCommand(validTweet: any, command: any) {
         });
       }
 
-      logger.info("Pending tip created", {
+      logger.info("Pending tip created via bot", {
         tweetId: validTweet.id,
         sender: sender.twitter_handle,
         recipient: command.recipient,
         amount: command.amount,
         currency: command.currency,
+        pendingTipId: transferResult.pendingTipId,
       });
+
       return;
     }
 
-    // Both users exist - create transaction
-    await db.insert(transactions).values({
-      sender_id: sender.id,
-      receiver_id: recipient.id,
-      amount: String(command.amount),
-      token: command.currency!,
-      status: "confirmed",
-    });
-
-    const reply = `✅ Transaction of ${command.amount} ${command.currency} from @${sender.twitter_handle} to @${recipient.twitter_handle} recorded.`;
+    // Direct transfer created (pending on-chain signature). Reply with activity link so sender can complete signing in dashboard.
+    const activityUrl = `${process.env.APP_URL || "https://tipjar.app"}/activity/${transferResult.transactionId}`;
+    const reply = `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} created. To complete the transfer, sign it here: ${activityUrl}`;
 
     if (!DRY_RUN) {
       await rwClient.v2.reply(reply, validTweet.id);
@@ -104,12 +117,13 @@ export async function handleTransactionCommand(validTweet: any, command: any) {
       logger.info("DRY RUN - Would send reply", { message: reply });
     }
 
-    logger.info("Transaction processed successfully", {
+    logger.info("Transaction created (awaiting signature)", {
       tweetId: validTweet.id,
       amount: command.amount,
       currency: command.currency,
       sender: sender.twitter_handle,
-      recipient: recipient.twitter_handle,
+      recipient: command.recipient,
+      transactionId: transferResult.transactionId,
     });
   } catch (error) {
     logger.error("Failed to process transaction", error as Error, {

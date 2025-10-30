@@ -4,9 +4,8 @@ import React, { ReactNode } from 'react';
 import { Navbar } from '../Navbar';
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const { isLoading } = useGetCurrentUser();
-  useWalletInit(); // Initialize wallet state on app load
-
+  useGetCurrentUser();
+  useWalletInit();
   return (
     <div>
       <Navbar />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import type { TipActivity } from '@/app/dashboard/types';
 import { ITransaction } from '@/api/transferQueries';
 import Link from 'next/link';
 

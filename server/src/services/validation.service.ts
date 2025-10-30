@@ -18,6 +18,7 @@ export const commandSchema = z.object({
     .string()
     .regex(/^[a-zA-Z0-9_]{1,15}$/)
     .optional(),
+  note: z.string().max(256).optional(),
 });
 
 export const validateTweet = (tweet: TweetV2) => {
@@ -29,6 +30,7 @@ export const validateCommand = (command: {
   amount: number;
   currency: string;
   recipient: string;
+  note?: string;
 }) => {
   return commandSchema.safeParse(command);
 };

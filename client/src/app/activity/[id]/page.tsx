@@ -2,12 +2,14 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { TransferQueries } from '@/api/transferQueries';
+import {
+  TransferQueries,
+  GetTransferByIdResponse,
+} from '@/api/transferQueries';
 import { apiClient } from '@/api/apiClient';
 import { CompleteTransferRequest } from '@/api/transferQueries';
 import { useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { signTransaction } from '@/lib/hashconnect';
 import { useWalletState } from '@/store';
 import { useQueryClient } from '@tanstack/react-query';
 import { endpoints } from '@/api/endpoints';
@@ -22,9 +24,17 @@ export default function ActivityDetailPage() {
   if (error)
     return <div className="p-6 text-red-600">Error: {error.message}</div>;
 
-  const tx = data?.data;
+  const tx = data?.data as GetTransferByIdResponse['data'] & {
+    counterparty?: {
+      id: string;
+      twitter_handle: string;
+      name: string;
+      profile_image_url: string;
+    } | null;
+  };
+
   if (!tx) return <div className="p-6">No transaction found.</div>;
-  const counterparty = (tx as any).counterparty || null;
+  const counterparty = tx.counterparty || null;
 
   return (
     <div className="max-w-[900px] mx-auto p-6">
@@ -97,9 +107,22 @@ export default function ActivityDetailPage() {
   );
 }
 
-function SigningBlock({ tx }: { tx: any }) {
+function SigningBlock({
+  tx,
+}: {
+  tx: GetTransferByIdResponse['data'] & {
+    unsignedTransaction?: {
+      transactionBytes?: string;
+      senderAccountId?: string;
+      receiverAccountId?: string;
+      amount?: number;
+      token?: string;
+    } | null;
+  };
+}) {
   const [busy, setBusy] = useState(false);
   const { accountId, isConnected, connect } = useWalletState();
+  const queryClient = useQueryClient();
 
   const unsigned = tx.unsignedTransaction;
 
@@ -109,7 +132,8 @@ function SigningBlock({ tx }: { tx: any }) {
     if (!isConnected || !accountId) {
       try {
         await connect();
-      } catch (e) {
+      } catch (connectErr) {
+        console.error('Wallet connect failed', connectErr);
         alert('Please connect your wallet before signing');
         return;
       }
@@ -128,8 +152,14 @@ function SigningBlock({ tx }: { tx: any }) {
     }
 
     setBusy(true);
-    const queryClient = useQueryClient();
     try {
+      if (!unsigned || !unsigned.transactionBytes) {
+        alert('Unsigned transaction is not available');
+        setBusy(false);
+        return;
+      }
+      const { signTransaction } = await import('@/lib/hashconnect');
+
       const signedBytes = await signTransaction(unsigned.transactionBytes);
 
       const body: CompleteTransferRequest = {
@@ -145,10 +175,8 @@ function SigningBlock({ tx }: { tx: any }) {
       await queryClient.invalidateQueries({
         queryKey: [endpoints.getUserTransactions.key],
       });
-    } catch (err: any) {
-      console.error('Sign/submit failed:', err);
-      const msg = err?.response?.data?.error || err?.message || String(err);
-      alert(`Failed to submit signed transaction: ${msg}`);
+    } catch {
+      alert(`Failed to submit signed transaction`);
     } finally {
       setBusy(false);
     }

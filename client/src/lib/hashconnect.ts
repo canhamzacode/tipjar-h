@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
+
 import { HashConnect } from 'hashconnect';
 import { LedgerId, Transaction, AccountId } from '@hashgraph/sdk';
 
@@ -140,7 +142,7 @@ export function getAccountIds(): string[] {
     hasHashConnect: !!hc,
     connectedAccountIds: accountIds,
     accountCount: accountIds.length,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
   return accountIds.map((id) => id.toString());
 }
@@ -157,17 +159,17 @@ export function resetSigningState(): void {
 export async function checkAndRestoreConnection(): Promise<boolean> {
   try {
     await hcInitPromise;
-    
+
     const accountIds = hc.connectedAccountIds || [];
     console.log('Connection check:', {
       hasAccounts: accountIds.length > 0,
-      accountIds: accountIds.map(id => id.toString())
+      accountIds: accountIds.map((id) => id.toString()),
     });
-    
+
     if (accountIds.length > 0) {
       return true;
     }
-    
+
     // Try to restore from persisted state
     if (typeof window !== 'undefined') {
       const storage = localStorage.getItem('tipjar-app-storage');
@@ -175,13 +177,16 @@ export async function checkAndRestoreConnection(): Promise<boolean> {
         try {
           const parsed = JSON.parse(storage);
           const persistedAccountId = parsed.state?.accountId;
-          
+
           if (persistedAccountId) {
-            console.log('Attempting to restore connection for:', persistedAccountId);
+            console.log(
+              'Attempting to restore connection for:',
+              persistedAccountId
+            );
             // The connection might be restored automatically by HashConnect
             // Give it a moment to reconnect
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
             const newAccountIds = hc.connectedAccountIds || [];
             return newAccountIds.length > 0;
           }
@@ -190,7 +195,7 @@ export async function checkAndRestoreConnection(): Promise<boolean> {
         }
       }
     }
-    
+
     return false;
   } catch (error) {
     console.error('Connection check failed:', error);
@@ -255,7 +260,7 @@ export async function signTransaction(
   }
 
   isSigning = true;
-  
+
   try {
     console.log('Starting transaction signing process...');
     await hcInitPromise;
@@ -266,11 +271,13 @@ export async function signTransaction(
       connectedAccountIds: accountIds,
       accountCount: accountIds.length,
       firstAccount: accountIds.length > 0 ? accountIds[0] : 'none',
-      hasHashConnect: !!hc
+      hasHashConnect: !!hc,
     });
 
     if (!accountIds || accountIds.length === 0) {
-      throw new Error('No connected accounts found. Please connect your wallet first.');
+      throw new Error(
+        'No connected accounts found. Please connect your wallet first.'
+      );
     }
 
     const accountIdForSigning = accountIds[0];
@@ -278,7 +285,10 @@ export async function signTransaction(
       throw new Error('Invalid account ID. Please reconnect your wallet.');
     }
 
-    console.log('Attempting to sign transaction with account:', accountIdForSigning.toString());
+    console.log(
+      'Attempting to sign transaction with account:',
+      accountIdForSigning.toString()
+    );
 
     let result: any;
 
@@ -286,53 +296,64 @@ export async function signTransaction(
       // Parse the transaction to understand its structure
       const transactionBuffer = Buffer.from(transactionBytes, 'base64');
       console.log('Transaction buffer length:', transactionBuffer.length);
-      
+
       let transaction: any;
       try {
         transaction = Transaction.fromBytes(transactionBuffer);
         console.log('Successfully parsed transaction');
-        
+
         // Log transaction details for debugging
         console.log('Transaction details:', {
           transactionId: transaction.transactionId?.toString(),
-          nodeAccountIds: transaction.nodeAccountIds?.map((id: any) => id.toString()),
+          nodeAccountIds: transaction.nodeAccountIds?.map((id: any) =>
+            id.toString()
+          ),
           nodeCount: transaction.nodeAccountIds?.length,
-          memo: transaction.transactionMemo
+          memo: transaction.transactionMemo,
         });
-        
       } catch (parseError) {
         console.log('Failed to parse transaction:', parseError);
         throw new Error('Unable to parse transaction bytes');
       }
 
       // Try the simplest approach first - direct signing with string account ID and transaction bytes
-      console.log('Attempting direct signing with string account ID and base64 bytes...');
+      console.log(
+        'Attempting direct signing with string account ID and base64 bytes...'
+      );
       result = await (hc as any).signTransaction(
         accountIdForSigning.toString(),
         transactionBytes
       );
       console.log('Direct signing successful');
     } catch (firstError) {
-      console.log('Direct signing failed, trying with Transaction object:', firstError);
-      
+      console.log(
+        'Direct signing failed, trying with Transaction object:',
+        firstError
+      );
+
       try {
         // Try with parsed transaction object
         const transactionBuffer = Buffer.from(transactionBytes, 'base64');
         const transaction = Transaction.fromBytes(transactionBuffer);
-        
+
         result = await (hc as any).signTransaction(
           accountIdForSigning.toString(),
           transaction as any
         );
         console.log('Transaction object signing successful');
       } catch (secondError) {
-        console.log('Transaction object signing failed, trying with AccountId object:', secondError);
-        
+        console.log(
+          'Transaction object signing failed, trying with AccountId object:',
+          secondError
+        );
+
         try {
           const transactionBuffer = Buffer.from(transactionBytes, 'base64');
           const transaction = Transaction.fromBytes(transactionBuffer);
-          const accountIdObj = AccountId.fromString(accountIdForSigning.toString());
-          
+          const accountIdObj = AccountId.fromString(
+            accountIdForSigning.toString()
+          );
+
           result = await (hc as any).signTransaction(
             accountIdObj as any,
             transaction as any
@@ -354,21 +375,28 @@ export async function signTransaction(
           console.error('All signing attempts failed:', {
             firstError: firstErrorMsg,
             secondError: secondErrorMsg,
-            thirdError: thirdErrorMsg
+            thirdError: thirdErrorMsg,
           });
-          
+
           // Check if this is a batch transaction issue
-          const batchErrorKeywords = ['Signature array must match', 'batch', 'multiple transactions'];
-          const hasBatchError = batchErrorKeywords.some(keyword => 
-            firstErrorMsg.toLowerCase().includes(keyword.toLowerCase()) ||
-            secondErrorMsg.toLowerCase().includes(keyword.toLowerCase()) ||
-            thirdErrorMsg.toLowerCase().includes(keyword.toLowerCase())
+          const batchErrorKeywords = [
+            'Signature array must match',
+            'batch',
+            'multiple transactions',
+          ];
+          const hasBatchError = batchErrorKeywords.some(
+            (keyword) =>
+              firstErrorMsg.toLowerCase().includes(keyword.toLowerCase()) ||
+              secondErrorMsg.toLowerCase().includes(keyword.toLowerCase()) ||
+              thirdErrorMsg.toLowerCase().includes(keyword.toLowerCase())
           );
 
           if (hasBatchError) {
-            throw new Error('This appears to be a batch transaction. Batch transactions may not be supported by your wallet. Please try with a single transaction.');
+            throw new Error(
+              'This appears to be a batch transaction. Batch transactions may not be supported by your wallet. Please try with a single transaction.'
+            );
           }
-          
+
           throw new Error(`HashConnect signing failed: ${firstErrorMsg}`);
         }
       }
@@ -379,7 +407,7 @@ export async function signTransaction(
       isString: typeof result === 'string',
       hasToBytes: result && typeof result.toBytes === 'function',
       hasSignedTransaction: result && result.signedTransaction,
-      hasBytes: result && result.bytes
+      hasBytes: result && result.bytes,
     });
 
     // Process the result with better type safety
@@ -390,7 +418,9 @@ export async function signTransaction(
         signedTransactionBytes = result;
         console.log('Using result as string directly');
       } else if (result && typeof result.toBytes === 'function') {
-        signedTransactionBytes = Buffer.from(result.toBytes()).toString('base64');
+        signedTransactionBytes = Buffer.from(result.toBytes()).toString(
+          'base64'
+        );
         console.log('Using result.toBytes()');
       } else if (result && result.signedTransaction) {
         const signedTx = result.signedTransaction;
@@ -398,7 +428,9 @@ export async function signTransaction(
           signedTransactionBytes = signedTx;
           console.log('Using result.signedTransaction as string');
         } else if (signedTx && typeof signedTx.toBytes === 'function') {
-          signedTransactionBytes = Buffer.from(signedTx.toBytes()).toString('base64');
+          signedTransactionBytes = Buffer.from(signedTx.toBytes()).toString(
+            'base64'
+          );
           console.log('Using result.signedTransaction.toBytes()');
         } else {
           signedTransactionBytes = Buffer.from(signedTx).toString('base64');
@@ -413,15 +445,21 @@ export async function signTransaction(
       }
     } catch (processingError) {
       console.error('Error processing signing result:', processingError);
-      throw new Error(`Failed to process signing result: ${processingError instanceof Error ? processingError.message : String(processingError)}`);
+      throw new Error(
+        `Failed to process signing result: ${
+          processingError instanceof Error
+            ? processingError.message
+            : String(processingError)
+        }`
+      );
     }
 
     console.log('Transaction signed successfully, returning bytes');
     return signedTransactionBytes;
-    
   } catch (error) {
     console.error('Transaction signing failed:', error);
-    const errorMessage = error instanceof Error ? error.message : String(error || 'Unknown error');
+    const errorMessage =
+      error instanceof Error ? error.message : String(error || 'Unknown error');
     throw new Error(`Failed to sign transaction: ${errorMessage}`);
   } finally {
     isSigning = false;

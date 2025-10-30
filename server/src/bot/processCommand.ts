@@ -15,8 +15,8 @@ export async function processCommand(validTweet: {
     await handleTransactionCommand(validTweet, command);
   } else {
     const helpMessage = command.error
-      ? `❌ ${command.error}. Try: "send 5 HBAR @username"`
-      : `❌ Could not understand your command. Try: "send 5 HBAR @username"`;
+      ? `❌ ${command.error}. Try: "send 5 HBAR @username [optional message]"`
+      : `❌ Could not understand your command. Try: "send 5 HBAR @username [optional message]"`;
 
     if (!DRY_RUN) {
       await rwClient.v2.reply(helpMessage, validTweet.id);
