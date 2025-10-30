@@ -7,7 +7,7 @@ import TokenManager from '@/utils/cookies';
 
 export const useGetCurrentUser = () => {
   const { setUser, setIsAuthenticated } = useAuthState();
-  const { data: userData } = AuthQueries.useGetCurrentUser();
+  const { data: userData, isLoading } = AuthQueries.useGetCurrentUser();
   const token = TokenManager.getAccessToken();
 
   useEffect(() => {
@@ -23,5 +23,5 @@ export const useGetCurrentUser = () => {
     }
   }, [userData, setUser, setIsAuthenticated, token]);
 
-  return { userData };
+  return { userData, isLoading };
 };

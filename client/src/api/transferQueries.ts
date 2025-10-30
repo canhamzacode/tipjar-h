@@ -80,7 +80,7 @@ export interface ITransaction {
   token: string | null;
   tx_hash: string | null;
   status: 'pending' | 'confirmed' | 'failed';
-  created_at: Date | null;
+  created_at: string | null;
   note: string | null;
   counterparty: {
     id: string;
@@ -88,6 +88,35 @@ export interface ITransaction {
     name: string;
     profile_image_url: string;
   } | null;
+  // Unsigned transaction for pending non-custodial transfers. May be null when
+  // the tip has already been processed or one of the wallets is missing.
+  unsignedTransaction?: {
+    transactionBytes?: string;
+    senderAccountId?: string;
+    receiverAccountId?: string;
+    amount?: number;
+    token?: string;
+  } | null;
+}
+
+export interface GetTransferByIdResponse {
+  success: boolean;
+  data: {
+    transactionId: string;
+    status: 'pending' | 'confirmed' | 'failed';
+    txHash?: string | null;
+    amount?: number | string | null;
+    token?: string | null;
+    note?: string | null;
+    created_at?: string | null;
+    unsignedTransaction?: {
+      transactionBytes: string;
+      senderAccountId: string;
+      receiverAccountId: string;
+      amount: number;
+      token: string;
+    } | null;
+  };
 }
 
 export const TransferQueries = {
@@ -100,6 +129,16 @@ export const TransferQueries = {
           (res.data.transactions as ITransaction[]) || ([] as ITransaction[])
         );
       },
+    }),
+
+  useGetTransferById: (id: string) =>
+    useQuery({
+      queryKey: [endpoints.getTransferById.key, id],
+      queryFn: async () => {
+        const res = await apiClient.get(endpoints.getTransferById.url(id));
+        return res.data as GetTransferByIdResponse;
+      },
+      enabled: Boolean(id),
     }),
 
   // Non-custodial transfer mutations

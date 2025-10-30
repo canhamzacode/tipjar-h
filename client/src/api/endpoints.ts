@@ -19,6 +19,12 @@ export const endpoints = {
     url: '/transactions',
   },
 
+  getTransferById: {
+    key: 'getTransferById',
+    // caller should pass id to url function
+    url: (id: string) => `/transfer/${id}`,
+  },
+
   // wallet connect
   walletConnect: {
     key: 'walletConnect',

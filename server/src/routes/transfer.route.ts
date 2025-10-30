@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { initiateTransfer, completeTransfer } from "../controller/transfer";
+import {
+  initiateTransfer,
+  completeTransfer,
+  getTransferById,
+} from "../controller/transfer";
 import { authenticate, validate } from "../middleware";
 import {
   asyncHandler,
@@ -19,5 +23,8 @@ router.post(
 
 // Complete a transfer - submits signed transaction
 router.post("/complete", authenticate, asyncHandler(completeTransfer));
+
+// Get unsigned transaction details (for sender to fetch and sign)
+router.get("/:id", authenticate, asyncHandler(getTransferById));
 
 export default router;

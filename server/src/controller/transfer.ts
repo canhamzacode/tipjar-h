@@ -162,3 +162,135 @@ export const completeTransfer = async (req: Request, res: Response) => {
 };
 
 export const tokenTransfer = initiateTransfer;
+
+export const getTransferById = async (req: Request, res: Response) => {
+  if (!req.user) {
+    return res.status(HTTP_STATUS.UNAUTHORIZED).json({
+      message: "Authentication required",
+    });
+  }
+
+  const transactionId = req.params.id;
+  // Reconstruct unsigned transaction using stored metadata when possible.
+  // If the transaction is already confirmed/failed, return the details with
+  // `unsignedTransaction: null` so callers can handle already-processed txs.
+
+  const transaction = await getTransactionById(transactionId);
+
+  if (!transaction) {
+    return res.status(HTTP_STATUS.NOT_FOUND).json({
+      message: "Transaction not found",
+    });
+  }
+
+  try {
+    const sender = transaction.sender_id
+      ? await findUserById(transaction.sender_id)
+      : null;
+    const receiver = transaction.receiver_id
+      ? await findUserById(transaction.receiver_id)
+      : null;
+
+    const baseResponse: any = {
+      transactionId: transaction.id,
+      status: transaction.status,
+      txHash: transaction.tx_hash || null,
+      amount: transaction.amount,
+      token: transaction.token || "HBAR",
+      note: transaction.note || null,
+      created_at: transaction.created_at,
+      counterparty: null,
+    };
+
+    // Only the original sender may fetch the unsigned transaction to sign
+    if (transaction.sender_id !== req.user.userId) {
+      return res.status(HTTP_STATUS.FORBIDDEN).json({
+        message: "Unauthorized to view this transaction",
+      });
+    }
+
+    // attach counterparty info for the UI: if requester is sender, counterparty is receiver and vice-versa
+    try {
+      const counterpartyUser =
+        transaction.sender_id === req.user.userId ? receiver : sender;
+
+      baseResponse.counterparty = counterpartyUser
+        ? {
+            id: counterpartyUser.id,
+            twitter_handle: counterpartyUser.twitter_handle,
+            name: counterpartyUser.name,
+            profile_image_url: counterpartyUser.profile_image_url,
+          }
+        : null;
+    } catch (err) {
+      baseResponse.counterparty = null;
+    }
+
+    // If transaction is pending and both parties have wallet addresses,
+    // attempt to build unsigned transaction. Otherwise return null for it.
+    if (transaction.status === "pending") {
+      if (!sender || !sender.wallet_address) {
+        // sender missing wallet -> cannot build unsigned transaction
+        return res.status(HTTP_STATUS.OK).json({
+          success: true,
+          data: {
+            ...baseResponse,
+            unsignedTransaction: null,
+            message:
+              "Sender wallet not connected; connect wallet to sign the transaction.",
+          },
+        });
+      }
+
+      if (!receiver || !receiver.wallet_address) {
+        return res.status(HTTP_STATUS.OK).json({
+          success: true,
+          data: {
+            ...baseResponse,
+            unsignedTransaction: null,
+            message:
+              "Receiver wallet not available; cannot construct unsigned transaction.",
+          },
+        });
+      }
+
+      const amountNum = Number(transaction.amount);
+      if (Number.isNaN(amountNum)) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json({
+          message: "Invalid transaction amount stored on server",
+        });
+      }
+
+      const unsignedTransaction = await createUnsignedTransaction({
+        senderAccountId: sender.wallet_address,
+        receiverAccountId: receiver.wallet_address,
+        amount: amountNum,
+        token: transaction.token || "HBAR",
+        memo: transaction.note || undefined,
+      });
+
+      return res.status(HTTP_STATUS.OK).json({
+        success: true,
+        data: {
+          ...baseResponse,
+          unsignedTransaction,
+        },
+      });
+    }
+
+    // Not pending: already processed (confirmed/failed) - return details with null unsignedTransaction
+    return res.status(HTTP_STATUS.OK).json({
+      success: true,
+      data: {
+        ...baseResponse,
+        unsignedTransaction: null,
+      },
+    });
+  } catch (error) {
+    logger.error("Failed to build unsigned transaction", error as Error);
+    return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+      message: "Failed to construct unsigned transaction",
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+};

@@ -94,6 +94,14 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
         >
           View on HashScan
         </Link>
+        <div className="mt-2">
+          <Link
+            href={`/activity/${activity.id}`}
+            className="text-sm text-primary"
+          >
+            View details
+          </Link>
+        </div>
       </div>
     </div>
   );
