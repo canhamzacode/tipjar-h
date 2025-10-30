@@ -300,3 +300,25 @@
 2025-10-30 22:10:29 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
 2025-10-30 22:10:29 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
 2025-10-30 22:17:55 info: Received SIGTERM, shutting down gracefully
+2025-10-30 22:18:08 info: Server started {"port":8000}
+2025-10-30 22:34:42 info: Received SIGTERM, shutting down gracefully
+2025-10-30 22:34:58 info: Server started {"port":8000}
+2025-10-30 22:39:30 warn: Missing or invalid Authorization header {"path":"/me"}
+2025-10-30 22:39:30 warn: Missing or invalid Authorization header {"path":"/"}
+2025-10-30 22:39:37 info: Access token refreshed {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42"}
+2025-10-30 22:43:15 info: Received SIGTERM, shutting down gracefully
+2025-10-30 22:43:30 info: Server started {"port":8000}
+2025-10-30 22:56:34 info: Received SIGTERM, shutting down gracefully
+2025-10-30 22:56:48 info: Server started {"port":8000}
+2025-10-30 22:57:46 info: Received SIGTERM, shutting down gracefully
+2025-10-30 22:57:56 info: Server started {"port":8000}
+2025-10-30 23:10:02 info: Received SIGTERM, shutting down gracefully
+2025-10-30 23:10:17 info: Server started {"port":8000}
+2025-10-30 23:10:27 info: Received SIGTERM, shutting down gracefully
+2025-10-30 23:10:36 info: Server started {"port":8000}
+2025-10-30 23:21:13 info: Starting Twitter bot for @canhamzacode with schedule: */15 * * * *
+2025-10-30 23:21:13 info: Cron job started successfully.
+2025-10-30 23:22:39 info: Received SIGTERM, shutting down gracefully
+2025-10-30 23:22:52 info: Server started {"port":8000}
+2025-10-30 23:22:55 info: Server started {"port":8000}
+2025-10-30 23:22:58 info: Received SIGTERM, shutting down gracefully
