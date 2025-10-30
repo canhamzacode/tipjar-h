@@ -6,22 +6,28 @@ import { AuthQueries } from '@/api';
 import TokenManager from '@/utils/cookies';
 
 export const useGetCurrentUser = () => {
-  const { setUser, setIsAuthenticated } = useAuthState();
-  const { data: userData, isLoading } = AuthQueries.useGetCurrentUser();
+  const { setUser, setIsAuthenticated, setAuthLoading, isAuthLoading } = useAuthState();
+  const { data: userData, isLoading, error } = AuthQueries.useGetCurrentUser();
   const token = TokenManager.getAccessToken();
 
   useEffect(() => {
     if (userData?.data) {
       setUser(userData?.data?.user);
       setIsAuthenticated(true);
-      return;
-    }
-
-    if (!userData) {
+      setAuthLoading(false);
+    } else if (error || (!userData && !isLoading)) {
       setUser(null);
       setIsAuthenticated(false);
+      setAuthLoading(false);
     }
-  }, [userData, setUser, setIsAuthenticated, token]);
+  }, [userData, isLoading, error, setUser, setIsAuthenticated, setAuthLoading]);
 
-  return { userData, isLoading };
+  // Handle auth loading state when query starts loading
+  useEffect(() => {
+    if (isLoading && token && !isAuthLoading) {
+      setAuthLoading(true);
+    }
+  }, [isLoading, token, isAuthLoading, setAuthLoading]);
+
+  return { userData, isLoading: isLoading || isAuthLoading };
 };

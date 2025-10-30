@@ -219,7 +219,6 @@ export const getTransferById = async (req: Request, res: Response) => {
       });
     }
 
-    // attach counterparty info for the UI: if requester is sender, counterparty is receiver and vice-versa
     try {
       const counterpartyUser =
         transaction.sender_id === req.user.userId ? receiver : sender;

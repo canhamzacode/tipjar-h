@@ -106,6 +106,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
             : ''}{' '}
           HBAR {Number(activity?.amount ?? 0).toFixed(2)}
         </p>
+        {activity.tx_hash && (
         <Link
           href={`https://hashscan.io/testnet/transaction/${activity.tx_hash}`}
           target="_blank"
@@ -114,6 +115,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
         >
           View on HashScan
         </Link>
+        )}
         <div className="mt-2">
           <Link
             href={`/activity/${activity.id}`}

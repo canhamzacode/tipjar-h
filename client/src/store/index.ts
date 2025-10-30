@@ -21,7 +21,8 @@ const useAppState = create<AppState>()(
         // Only persist wallet state for security
         accountId: state.accountId,
         isConnected: state.isConnected,
-        // Don't persist auth state or loading states
+        // Don't persist auth state or loading states for security
+        // isAuthLoading, user, isAuthenticated are intentionally excluded
       }),
       onRehydrateStorage: () => (state) => {
         if (state?.accountId && state.rehydrateConnection) {

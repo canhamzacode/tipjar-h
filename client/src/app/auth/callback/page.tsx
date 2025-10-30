@@ -2,34 +2,55 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState, Suspense } from 'react';
 import { Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { useQueryClient } from '@tanstack/react-query';
 import TokenManager from '@/utils/cookies';
+import { useAuthState } from '@/store';
+import { endpoints } from '@/api/endpoints';
 
 const AuthCallbackContent = () => {
   const searchParams = useSearchParams();
   const access_token = searchParams.get('access_token');
   const refresh_token = searchParams.get('refresh_token');
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const { setAuthLoading } = useAuthState();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>(
     'loading'
   );
 
   useEffect(() => {
-    if (access_token || refresh_token) {
-      try {
-        TokenManager.setTokens({
-          accessToken: access_token ?? null,
-          refreshToken: refresh_token ?? null,
-        });
-        setStatus('success');
-        setTimeout(() => router.push('/dashboard'), 900);
-      } catch (err) {
-        console.error('Failed to persist tokens', err);
+    const handleAuthCallback = async () => {
+      if (access_token || refresh_token) {
+        try {
+          setAuthLoading(true);
+          TokenManager.setTokens({
+            accessToken: access_token ?? null,
+            refreshToken: refresh_token ?? null,
+          });
+
+          await queryClient.invalidateQueries({
+            queryKey: [endpoints.getCurrentUser.key],
+          });
+
+          setStatus('success');
+
+          setTimeout(() => {
+            setAuthLoading(false);
+            router.push('/dashboard');
+          }, 900);
+        } catch (err) {
+          console.error('Failed to persist tokens', err);
+          setStatus('error');
+          setAuthLoading(false);
+        }
+      } else {
         setStatus('error');
+        setAuthLoading(false);
       }
-    } else {
-      setStatus('error');
-    }
-  }, [access_token, refresh_token, router]);
+    };
+
+    handleAuthCallback();
+  }, [access_token, refresh_token, router, queryClient, setAuthLoading]);
 
   const STATUS_MAP: Record<
     typeof status,
@@ -48,7 +69,7 @@ const AuthCallbackContent = () => {
       iconClass: 'animate-spin text-blue-500',
     },
     success: {
-      title: 'Connected — redirecting',
+      title: 'Connected redirecting',
       message: 'You will be redirected shortly.',
       Icon: CheckCircle,
       iconClass: 'text-green-500',

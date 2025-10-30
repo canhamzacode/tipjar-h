@@ -283,3 +283,20 @@
 2025-10-30 11:30:40 info: Updating transaction status {"transactionId":"956e96d4-ced5-40c5-a42d-7f46067de3e1","status":"confirmed","txHash":"0.0.7134924@1761823802.207754851"}
 2025-10-30 11:30:40 info: Transaction status updated {"transactionId":"956e96d4-ced5-40c5-a42d-7f46067de3e1","status":"confirmed"}
 2025-10-30 11:30:40 info: Transfer completed successfully {"transactionId":"956e96d4-ced5-40c5-a42d-7f46067de3e1","txHash":"0.0.7134924@1761823802.207754851","sender":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","receiver":"534451d1-fc56-47cb-b66f-10c8f7d4c940"}
+2025-10-30 21:41:21 info: Server started {"port":8000}
+2025-10-30 21:42:39 info: Twitter OAuth initiated {"state":"dh81-GRbon.Eu-tNf.MoJ1fVnLi.m4Qv"}
+2025-10-30 22:03:13 info: OAuth token exchange successful
+2025-10-30 22:03:13 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-30 22:03:23 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-30 22:03:23 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-30 22:06:35 info: Twitter OAuth initiated {"state":"5~-zp_i0cWII9.9N8H-Kh-u53CnoqKay"}
+2025-10-30 22:06:51 info: OAuth token exchange successful
+2025-10-30 22:06:51 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-30 22:06:53 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-30 22:06:53 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-30 22:10:00 info: Twitter OAuth initiated {"state":"0T9m9N5RCC~6TvSIvejEetCue7U9-azw"}
+2025-10-30 22:10:26 info: OAuth token exchange successful
+2025-10-30 22:10:26 info: User authenticated successfully {"userId":"1776544369387933696","username":"tazmahcrypt"}
+2025-10-30 22:10:29 info: User updated successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterId":"1776544369387933696","twitterHandle":"tazmahcrypt"}
+2025-10-30 22:10:29 info: Twitter account linked successfully {"userId":"0c4ef147-6d95-4f46-81ee-c3e2b3d15d42","twitterHandle":"tazmahcrypt","reconciledTips":0}
+2025-10-30 22:17:55 info: Received SIGTERM, shutting down gracefully
