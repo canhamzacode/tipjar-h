@@ -47,12 +47,22 @@ export const initiateTransfer = async (req: Request, res: Response) => {
       receiverHandle,
     });
 
+    // Differentiate message depending on whether the recipient exists in our
+    // users table (but lacks a wallet) or doesn't exist at all.
+    const receiverExists = !!transferResult.receiverExists;
+
+    const message = receiverExists
+      ? `Tip created for @${receiverHandle}. They are registered but have not connected a wallet yet; once they connect a wallet they'll be able to claim this tip.`
+      : `Tip created for @${receiverHandle}. They do not have a TipJar profile yet; when they sign up and connect a wallet they'll be able to claim this tip by signing the pending transaction.`;
+
     return res.status(HTTP_STATUS.OK).json({
       success: true,
       type: "pending",
       data: {
         pendingTipId: transferResult.pendingTipId,
-        message: `Tip created for @${receiverHandle}. They will be notified to connect their wallet.`,
+        receiverExists,
+        receiverId: transferResult.receiverId ?? null,
+        message,
       },
     });
   }
@@ -214,14 +224,25 @@ export const getTransferById = async (req: Request, res: Response) => {
       const counterpartyUser =
         transaction.sender_id === req.user.userId ? receiver : sender;
 
-      baseResponse.counterparty = counterpartyUser
-        ? {
-            id: counterpartyUser.id,
-            twitter_handle: counterpartyUser.twitter_handle,
-            name: counterpartyUser.name,
-            profile_image_url: counterpartyUser.profile_image_url,
-          }
-        : null;
+      if (counterpartyUser) {
+        baseResponse.counterparty = {
+          id: counterpartyUser.id,
+          twitter_handle: counterpartyUser.twitter_handle,
+          name: counterpartyUser.name,
+          profile_image_url: counterpartyUser.profile_image_url,
+        };
+      } else if (transaction.receiver_twitter) {
+        // synthesize minimal counterparty when recipient isn't registered but
+        // we have the twitter handle (bot-created tip)
+        baseResponse.counterparty = {
+          id: null,
+          twitter_handle: transaction.receiver_twitter,
+          name: transaction.receiver_twitter,
+          profile_image_url: null,
+        };
+      } else {
+        baseResponse.counterparty = null;
+      }
     } catch (err) {
       baseResponse.counterparty = null;
     }
@@ -241,15 +262,21 @@ export const getTransferById = async (req: Request, res: Response) => {
           },
         });
       }
-
       if (!receiver || !receiver.wallet_address) {
+        // If the receiver is not registered but we have a receiver_twitter,
+        // return the base response with a clear message so the UI can show instructions.
+        const msg = receiver
+          ? "Receiver wallet not available; cannot construct unsigned transaction."
+          : transaction.receiver_twitter
+            ? "Receiver has not registered / connected a wallet; they must register and connect a wallet to claim this tip."
+            : "Receiver wallet not available; cannot construct unsigned transaction.";
+
         return res.status(HTTP_STATUS.OK).json({
           success: true,
           data: {
             ...baseResponse,
             unsignedTransaction: null,
-            message:
-              "Receiver wallet not available; cannot construct unsigned transaction.",
+            message: msg,
           },
         });
       }

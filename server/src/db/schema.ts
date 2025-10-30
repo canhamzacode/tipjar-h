@@ -41,6 +41,8 @@ export const transactions = pgTable("transactions", {
   id: uuid("id").defaultRandom().primaryKey(),
   sender_id: uuid("sender_id").references(() => users.id),
   receiver_id: uuid("receiver_id").references(() => users.id),
+  // optional twitter handle for cases where receiver is not yet a registered user
+  receiver_twitter: varchar("receiver_twitter", { length: 50 }),
   token: varchar("token", { length: 20 }),
   amount: text("amount"),
   note: text("note"),

@@ -6,6 +6,7 @@ import {
   cacheUser,
   logger,
   findUserByTwitterHandle,
+  findUserByTwitterId,
   processTransferRequest,
 } from "../services";
 import { rwClient, DRY_RUN } from "../utils/twitter";
@@ -37,8 +38,7 @@ export async function handleTransactionCommand(
   command: Command,
 ) {
   try {
-    // Sender must be authenticated (have twitter_id set)
-    const sender = await findUserByTwitterHandle(validTweet.author_id);
+    const sender = await findUserByTwitterId(validTweet.author_id);
 
     if (!sender || !sender.twitter_id || !sender.access_token) {
       const replyMessage = `❌ You must link your Twitter account first to send tips. Visit our app to authenticate: ${process.env.APP_URL || "https://tipjar.app"}/auth`;
@@ -85,7 +85,17 @@ export async function handleTransactionCommand(
     });
 
     if (transferResult.type === "pending") {
-      const pendingReply = `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} saved! They'll receive it when they link their account. View your tips: ${process.env.APP_URL || "https://tipjar.app"}/dashboard`;
+      const receiverExists = !!transferResult.receiverExists;
+      const baseUrl = process.env.APP_URL || "https://tipjar.app";
+      const activityLink = transferResult.transactionId
+        ? ` To view details: ${baseUrl}/activity/${transferResult.transactionId}`
+        : "";
+
+      const pendingReply = receiverExists
+        ? `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} saved! They are registered but have not connected a wallet; they'll be able to claim it after connecting a wallet. View your tips: ${baseUrl}/dashboard` +
+          activityLink
+        : `✅ Tip of ${command.amount} ${command.currency} to @${command.recipient} saved! They don't have a TipJar profile yet — when they sign up and connect a wallet they'll be able to claim it. View your tips: ${baseUrl}/dashboard` +
+          activityLink;
 
       if (!DRY_RUN) {
         await rwClient.v2.reply(pendingReply, validTweet.id);
@@ -102,6 +112,7 @@ export async function handleTransactionCommand(
         amount: command.amount,
         currency: command.currency,
         pendingTipId: transferResult.pendingTipId,
+        transactionId: transferResult.transactionId,
       });
 
       return;

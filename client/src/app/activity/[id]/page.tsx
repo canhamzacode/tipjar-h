@@ -2,6 +2,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 import {
   TransferQueries,
   GetTransferByIdResponse,
@@ -78,7 +79,42 @@ export default function ActivityDetailPage() {
                 View on HashScan
               </a>
             ) : (
-              <div className="text-sm text-gray-500 mt-1">{tx.status}</div>
+              // Render a status pill consistent with RecentActivity badge styling
+              (() => {
+                const statusConfig: Record<
+                  string,
+                  { label: string; className: string }
+                > = {
+                  confirmed: {
+                    label: 'Confirmed',
+                    className: 'bg-green-50 text-green-700 border-green-100',
+                  },
+                  pending: {
+                    label: 'Pending',
+                    className: 'bg-yellow-50 text-yellow-800 border-yellow-100',
+                  },
+                  failed: {
+                    label: 'Failed',
+                    className: 'bg-red-50 text-red-700 border-red-100',
+                  },
+                };
+
+                const s = statusConfig[tx.status] || {
+                  label: String(tx.status || '').toUpperCase(),
+                  className: 'bg-gray-50 text-gray-700 border-gray-100',
+                };
+
+                return (
+                  <span
+                    className={cn(
+                      'px-2 py-1 text-xs font-medium rounded-full border',
+                      s.className
+                    )}
+                  >
+                    {s.label}
+                  </span>
+                );
+              })()
             )}
           </div>
         </div>
@@ -92,7 +128,11 @@ export default function ActivityDetailPage() {
             <SigningBlock tx={tx} />
           ) : (
             <div className="mt-2 text-sm text-gray-600">
-              No signature required or already processed.
+              {tx.message ? (
+                <>{tx.message}</>
+              ) : (
+                <>No signature required or already processed.</>
+              )}
             </div>
           )}
         </div>

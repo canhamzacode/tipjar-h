@@ -11,15 +11,16 @@ interface ActivityItemProps {
 const statusConfig = {
   confirmed: {
     label: 'Confirmed',
-    className: 'bg-green-100 text-green-800 border-green-200',
+    // subtle background with stronger text — matches badge treatment used elsewhere
+    className: 'bg-green-50 text-green-700 border-green-100',
   },
   pending: {
     label: 'Pending',
-    className: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    className: 'bg-yellow-50 text-yellow-800 border-yellow-100',
   },
   failed: {
     label: 'Failed',
-    className: 'bg-red-100 text-red-800 border-red-200',
+    className: 'bg-red-50 text-red-700 border-red-100',
   },
 };
 
@@ -50,14 +51,23 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
             alt={activity.counterparty?.name || 'User Avatar'}
           />
           <AvatarFallback className="bg-gray-100">
-            {activity.counterparty?.name.slice(0, 2).toUpperCase()}
+            {(
+              activity.counterparty?.name ||
+              activity.counterparty?.twitter_handle ||
+              'U'
+            )
+              .slice(0, 2)
+              .toUpperCase()}
           </AvatarFallback>
         </Avatar>
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <p className="font-medium text-gray-900 truncate">
-              @{activity.counterparty?.twitter_handle || 'Unknown User'}
+              @
+              {activity.counterparty?.twitter_handle ||
+                activity.counterparty?.name ||
+                'Unknown User'}
             </p>
             <span
               className={cn(
@@ -82,7 +92,18 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({ activity }) => {
       </div>
 
       <div className="text-right">
-        <p className="font-semibold text-gray-900">
+        <p
+          className={cn('font-semibold', {
+            'text-green-600': activity.direction === 'received',
+            'text-red-600': activity.direction === 'sent',
+            'text-gray-900': !activity.direction,
+          })}
+        >
+          {activity.direction === 'received'
+            ? '+'
+            : activity.direction === 'sent'
+            ? '-'
+            : ''}{' '}
           HBAR {Number(activity?.amount ?? 0).toFixed(2)}
         </p>
         <Link

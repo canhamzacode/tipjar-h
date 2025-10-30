@@ -38,9 +38,21 @@ export const getUserTransactions = async (userId: string) => {
         const direction = t.sender_id === userId ? "sent" : "received";
         const counterpartyId =
           t.sender_id === userId ? t.receiver_id : t.sender_id;
-        const counterparty = counterpartyId
+        let counterparty = counterpartyId
           ? counterpartyMap.get(counterpartyId) || null
           : null;
+
+        // If the transaction refers to a receiver_twitter (for pending tips created by bot)
+        // and we don't have a full counterparty record, synthesize a minimal counterparty
+        // object so the client can show the twitter handle.
+        if (!counterparty && (t as any).receiver_twitter) {
+          counterparty = {
+            id: null,
+            twitter_handle: (t as any).receiver_twitter,
+            name: (t as any).receiver_twitter,
+            profile_image_url: null,
+          };
+        }
 
         const base: any = {
           id: t.id,

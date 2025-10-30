@@ -22,6 +22,10 @@ export interface TransferResult {
   transactionId?: string;
   pendingTipId?: string;
   receiverWalletAddress?: string;
+  // true if the receiver exists in our users table (even if they don't have a wallet)
+  receiverExists?: boolean;
+  // present when we know the receiver user id (nullable if receiver not registered)
+  receiverId?: string | null;
 }
 
 export async function validateReceiver(
@@ -68,7 +72,7 @@ export async function validateReceiver(
 
 export async function createPendingTip(
   transferRequest: TransferRequest,
-): Promise<string> {
+): Promise<{ pendingTipId: string; transactionId: string }> {
   logger.info("Creating pending tip", transferRequest);
 
   const receiverValidation = await validateReceiver(
@@ -89,12 +93,30 @@ export async function createPendingTip(
     })
     .returning();
 
+  // Also create a transactions row so the sender sees the tip in their dashboard
+  // even when the recipient is not yet registered/doesn't have a wallet.
+  const [transaction] = await db
+    .insert(transactions)
+    .values({
+      sender_id: transferRequest.senderId,
+      receiver_id: receiverValidation.receiverId || null,
+      receiver_twitter: transferRequest.receiverHandle,
+      token: transferRequest.token || "HBAR",
+      amount: transferRequest.amount.toString(),
+      // store optional note (nullable)
+      note: transferRequest.note ?? null,
+      status: "pending",
+    })
+    .returning();
+
   logger.info("Pending tip created", {
     pendingTipId: pendingTip.id,
+    transactionId: transaction.id,
     receiverHandle: transferRequest.receiverHandle,
   });
 
-  return pendingTip.id;
+  // return the pending tip id (caller may use transaction id from DB if needed)
+  return { pendingTipId: pendingTip.id, transactionId: transaction.id };
 }
 
 export async function createDirectTransaction(
@@ -111,6 +133,7 @@ export async function createDirectTransaction(
     .values({
       sender_id: transferRequest.senderId,
       receiver_id: receiverId,
+      receiver_twitter: transferRequest.receiverHandle,
       token: transferRequest.token || "HBAR",
       amount: transferRequest.amount.toString(),
       // store optional note (nullable)
@@ -137,11 +160,15 @@ export async function processTransferRequest(
 
   if (receiverValidation.type === "pending") {
     // TODO: Amount should be stored somewhere to make it easy to disburse to the user when they sign up.
-    const pendingTipId = await createPendingTip(transferRequest);
+    const { pendingTipId, transactionId } =
+      await createPendingTip(transferRequest);
 
     return {
       type: "pending",
       pendingTipId,
+      transactionId,
+      receiverExists: !!receiverValidation.receiverId,
+      receiverId: receiverValidation.receiverId || null,
     };
   } else {
     const transactionId = await createDirectTransaction(
@@ -153,6 +180,8 @@ export async function processTransferRequest(
       type: "direct",
       transactionId,
       receiverWalletAddress: receiverValidation.walletAddress,
+      receiverExists: true,
+      receiverId: receiverValidation.receiverId,
     };
   }
 }

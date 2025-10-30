@@ -58,7 +58,7 @@ const DashboardPage = () => {
             <QuickSendTipForm onSuccess={handleTipSuccess} />
           </div>
           <div>
-            <RecentActivityList numberOfItems={1} />
+            <RecentActivityList numberOfItems={5} />
           </div>
         </div>
       </div>
