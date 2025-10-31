@@ -39,8 +39,13 @@ export const handleTwitterCallback = async (
   next: NextFunction,
 ) => {
   const { code, state } = req.query;
+  logger.debug("Twitter callback received", {
+    cookieHeader: req.headers?.cookie ?? null,
+    sessionPresent: !!req.session,
+    sessionKeys: req.session ? Object.keys(req.session) : [],
+  });
 
-  const oauthData = req.session.oauth;
+  const oauthData = req.session?.oauth;
   if (!oauthData?.codeVerifier || !oauthData?.state) {
     logger.warn("Invalid session - OAuth data not found");
     return res.status(HTTP_STATUS.BAD_REQUEST).json({
