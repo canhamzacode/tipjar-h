@@ -210,10 +210,11 @@ export const getTransferById = async (req: Request, res: Response) => {
       note: transaction.note || null,
       created_at: transaction.created_at,
       counterparty: null,
+      userRole: transaction.sender_id === req.user.userId ? 'sender' : 'receiver',
     };
 
-    // Only the original sender may fetch the unsigned transaction to sign
-    if (transaction.sender_id !== req.user.userId) {
+    // Only the sender or receiver can view the transaction
+    if (transaction.sender_id !== req.user.userId && transaction.receiver_id !== req.user.userId) {
       return res.status(HTTP_STATUS.FORBIDDEN).json({
         message: "Unauthorized to view this transaction",
       });

@@ -387,7 +387,48 @@ DATABASE_URL=postgresql://user:pass@host:port/db
 **Judge Access Instructions**:
 Test credentials and access details are provided in the DoraHacks submission notes. The application includes a demo mode with pre-configured test accounts for evaluation purposes.
 
+## Important: Twitter API Rate Limiting
+
+### Free Tier Limitations
+
+If you're using Twitter's **Free API tier**, be aware of the following rate limiting constraints that may affect bot performance:
+
+**Rate Limit**: Free users can only poll Twitter endpoints **once every 15 minutes**
+
+**Impact on Bot Response Time**:
+- Bot responses may be delayed up to 15 minutes due to API polling restrictions
+- The bot processes mentions in batches rather than real-time
+- Users may experience slower notification and transaction processing
+
+### Workarounds for Testing
+
+**Option 1: Adjust Polling Frequency**
+```bash
+# In server/.env, you can temporarily increase polling frequency for testing
+POLL_INTERVAL=900000  # 15 minutes (900,000ms) to respect rate limits
+CRON_SCHEDULE=*/15 * * * *  # Every 15 minutes
+```
+
+**Option 2: Use Dashboard for Fast Testing**
+- The web dashboard (`http://localhost:3000`) provides immediate transaction processing
+- Direct peer-to-peer transfers bypass Twitter API limitations
+- Use dashboard for development and testing, bot for production social media integration
+
+**Option 3: Upgrade API Tier**
+- Twitter's Basic or Pro tiers offer higher rate limits
+- Enables more frequent polling and faster bot responses
+- Recommended for production deployment
+
+### Production Recommendations
+
+For production deployment with optimal user experience:
+1. **Upgrade to Twitter Basic/Pro API** for higher rate limits
+2. **Implement webhook endpoints** instead of polling (requires API upgrade)
+3. **Use dashboard as primary interface** with bot as supplementary feature
+4. **Set user expectations** about potential delays in bot responses
+
+**Note**: The 15-minute delay only affects the Twitter bot functionality. All other features (web dashboard, wallet connections, direct transfers) work in real-time without API restrictions.
+
 ---
 
-**Pitch Deck**: [Link to be added]
-**Certification Links**: [Link to be added]
+**Pitch Deck**: [[Link to be added](https://www.figma.com/deck/8B0muvKU2s6kyQ0ll5nSDj/TipJar?node-id=22-528&t=0rcfgzxx4xCxGPiq-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)]

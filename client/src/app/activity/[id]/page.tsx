@@ -32,6 +32,7 @@ export default function ActivityDetailPage() {
       name: string;
       profile_image_url: string;
     } | null;
+    userRole?: 'sender' | 'receiver';
   };
 
   if (!tx) return <div className="p-6">No transaction found.</div>;
@@ -124,12 +125,14 @@ export default function ActivityDetailPage() {
             <strong>Transaction ID:</strong> {tx.transactionId}
           </div>
 
-          {tx.unsignedTransaction ? (
+          {tx.unsignedTransaction && tx.userRole === 'sender' ? (
             <SigningBlock tx={tx} />
           ) : (
             <div className="mt-2 text-sm text-gray-600">
               {tx.message ? (
                 <>{tx.message}</>
+              ) : tx.userRole === 'receiver' ? (
+                <>Waiting for sender to sign this transaction.</>
               ) : (
                 <>No signature required or already processed.</>
               )}
@@ -158,6 +161,7 @@ function SigningBlock({
       amount?: number;
       token?: string;
     } | null;
+    userRole?: 'sender' | 'receiver';
   };
 }) {
   const [busy, setBusy] = useState(false);

@@ -109,6 +109,7 @@ export interface GetTransferByIdResponse {
     token?: string | null;
     note?: string | null;
     created_at?: string | null;
+    userRole?: 'sender' | 'receiver';
     // Optional server-provided message explaining current state (e.g., "Receiver not registered")
     message?: string | null;
     unsignedTransaction?: {
