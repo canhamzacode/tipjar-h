@@ -18,11 +18,13 @@ const useAppState = create<AppState>()(
       name: 'tipjar-app-storage',
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
-        // Only persist wallet state for security
+        // Persist wallet state
         accountId: state.accountId,
         isConnected: state.isConnected,
-        // Don't persist auth state or loading states for security
-        // isAuthLoading, user, isAuthenticated are intentionally excluded
+        // Persist auth state for better UX (tokens are in httpOnly cookies anyway)
+        user: state.user,
+        isAuthenticated: state.isAuthenticated,
+        // Don't persist loading states
       }),
       onRehydrateStorage: () => (state) => {
         if (state?.accountId && state.rehydrateConnection) {

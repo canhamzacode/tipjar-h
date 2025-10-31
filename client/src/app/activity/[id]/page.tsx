@@ -14,7 +14,6 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useWalletState } from '@/store';
 import { useQueryClient } from '@tanstack/react-query';
 import { endpoints } from '@/api/endpoints';
-import { Loader2 } from 'lucide-react';
 
 export default function ActivityDetailPage() {
   const params = useParams();
@@ -22,16 +21,7 @@ export default function ActivityDetailPage() {
 
   const { data, isLoading, error } = TransferQueries.useGetTransferById(id);
 
-  if (isLoading) {
-    return (
-      <div className="max-w-[900px] mx-auto p-6 flex items-center justify-center min-h-[400px]">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
-          <p className="text-slate-600">Loading activity details...</p>
-        </div>
-      </div>
-    );
-  }
+  if (isLoading) return <div className="p-6">Loading...</div>;
   if (error)
     return <div className="p-6 text-red-600">Error: {error.message}</div>;
 
