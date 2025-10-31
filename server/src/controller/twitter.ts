@@ -7,6 +7,11 @@ import {
   findUserById,
 } from "../services";
 import {
+  saveOAuthState,
+  getOAuthState,
+  deleteOAuthState,
+} from "../services/oauth-state.service";
+import {
   createOAuthClient,
   generateOAuthLink,
   generateTokenPair,
@@ -20,10 +25,8 @@ export const initiateTwitterOAuth = async (
 ) => {
   const { url, codeVerifier, state } = generateOAuthLink();
 
-  req.session.oauth = {
-    codeVerifier,
-    state,
-  };
+  // Store OAuth state in database instead of session
+  await saveOAuthState(state, codeVerifier);
 
   logger.info("Twitter OAuth initiated", { state });
 
@@ -40,26 +43,25 @@ export const handleTwitterCallback = async (
 ) => {
   const { code, state } = req.query;
   logger.debug("Twitter callback received", {
-    cookieHeader: req.headers?.cookie ?? null,
-    sessionPresent: !!req.session,
-    sessionKeys: req.session ? Object.keys(req.session) : [],
+    receivedState: state,
+    hasCode: !!code,
   });
 
-  const oauthData = req.session?.oauth;
-  if (!oauthData?.codeVerifier || !oauthData?.state) {
-    logger.warn("Invalid session - OAuth data not found");
+  // Get OAuth state from database instead of session
+  const oauthData = await getOAuthState(state);
+  if (!oauthData?.code_verifier) {
+    logger.warn("Invalid OAuth state - data not found or expired", { state });
     return res.status(HTTP_STATUS.BAD_REQUEST).json({
-      message: "Invalid session - please restart authentication",
+      message: "Invalid or expired OAuth state - please restart authentication",
     });
   }
 
-  if (state !== oauthData.state) {
-    logger.warn("OAuth state mismatch - possible CSRF attempt", {
-      receivedState: state,
-      expectedState: oauthData.state,
-    });
-    return res.status(HTTP_STATUS.FORBIDDEN).json({
-      message: "Invalid state parameter - security check failed",
+  // Check if state has expired
+  if (new Date() > oauthData.expires_at) {
+    logger.warn("OAuth state expired", { state, expiresAt: oauthData.expires_at });
+    await deleteOAuthState(state);
+    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+      message: "OAuth state expired - please restart authentication",
     });
   }
 
@@ -72,7 +74,7 @@ export const handleTwitterCallback = async (
     expiresIn,
   } = await client.loginWithOAuth2({
     code,
-    codeVerifier: oauthData.codeVerifier,
+    codeVerifier: oauthData.code_verifier,
     redirectUri: process.env.OAUTH2_CALLBACK_URL!,
   });
 
@@ -116,7 +118,8 @@ export const handleTwitterCallback = async (
     savedUser.id,
   );
 
-  delete req.session.oauth;
+  // Clean up OAuth state from database
+  await deleteOAuthState(state);
 
   const tokens = generateTokenPair({
     userId: savedUser.id,

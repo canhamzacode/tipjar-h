@@ -71,3 +71,10 @@ export const bot_state = pgTable("bot_state", {
   last_mention_id: text("last_mention_id"),
   updated_at: timestamp("updated_at").defaultNow(),
 });
+
+export const oauth_states = pgTable("oauth_states", {
+  state: text("state").primaryKey(),
+  code_verifier: text("code_verifier").notNull(),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  expires_at: timestamp("expires_at").notNull(),
+});
