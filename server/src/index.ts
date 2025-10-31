@@ -9,8 +9,8 @@ import cors from "cors";
 
 const app = express();
 
-// TODO: Upgrade to persistent session store (Redis or connect-pg-simple) for production
-// Current in-memory store will lose OAuth states on server restart
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your-secret-key-change-this",
@@ -19,6 +19,7 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     },
   }),
