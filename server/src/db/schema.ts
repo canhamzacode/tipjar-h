@@ -30,13 +30,6 @@ export const users = pgTable("users", {
   created_at: timestamp("created_at").defaultNow(),
 });
 
-export const contracts = pgTable("contracts", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  owner_id: uuid("owner_id").references(() => users.id),
-  contract_address: varchar("contract_address", { length: 66 }).unique(),
-  deployed_at: timestamp("deployed_at").defaultNow(),
-});
-
 export const transactions = pgTable("transactions", {
   id: uuid("id").defaultRandom().primaryKey(),
   sender_id: uuid("sender_id").references(() => users.id),
