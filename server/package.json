@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/index.ts",
+    "build": "rm -rf dist && npx tsc",
     "dev:bot": "tsx watch src/bot.ts",
-    "start": "tsx src/index.ts",
+    "start": "node dist/index.js",
     "start:bot": "tsx src/bot.ts",
     "start:server-only": "START_BOT=false tsx src/index.ts",
     "db:push": "drizzle-kit push",
